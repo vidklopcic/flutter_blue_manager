@@ -23,15 +23,6 @@ class FBMWriteData {
 abstract class FBMConnection {
   final FBMDevice device;
   BluetoothDeviceState _state = BluetoothDeviceState.disconnected;
-  set state(BluetoothDeviceState state) {
-    if (state == _state) return;
-    _state = state;
-    if (state == BluetoothDeviceState.disconnected) {
-      device.writeReady = false;
-      device.device.disconnect();
-    }
-    _state = state;
-  }
   BluetoothDeviceState get state => _state;
 
   List<BluetoothService> services = [];
@@ -67,7 +58,8 @@ abstract class FBMConnection {
     } else {
       device.writeReady = false;
     }
-    state = newState;
+
+    _state = newState;
     onDeviceStateChange();
   }
 
@@ -94,12 +86,12 @@ abstract class FBMConnection {
       device.device.disconnect();
     }
     lock.unlock();
-    completer.complete();
     _discoveringServices = null;
     if (svcs != null) {
       services = svcs;
       onServicesDiscovered();
     }
+    completer.complete();
   }
 
   Future<bool> turnOnNotifications(

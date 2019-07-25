@@ -90,7 +90,7 @@ class FlutterBlueManager {
     debug('bleStateChange: $event', FBMDebugLevel.event);
     if (_bleState == BluetoothState.on) {
       _restartScan();
-    } ,else {
+    } else {
 
     }
   }
@@ -121,11 +121,19 @@ class FlutterBlueManager {
     }
   }
 
+  List<String> _autoConnectHandled = [];
   Future _handleAutoConnect(ScanResult scanResult) async {
     String uuid = scanResult.device.id.toString();
-    if (!_autoConnect.containsKey(uuid)) return;
+    if (!_autoConnect.containsKey(uuid) || _autoConnectHandled.contains(uuid)) return;
+    _autoConnectHandled.add(uuid);
+    debug('handling auto connect', FBMDebugLevel.info);
     FBMLock lock = await getBleLock();
     FBMDevice device = _autoConnect[uuid];
+    if (device == null) {
+      _autoConnectHandled.remove(uuid);
+      lock.unlock();
+      return;
+    }
     device.device = scanResult.device;
     FBMConnection connection;
     if (_connections.containsKey(uuid))
@@ -144,6 +152,7 @@ class FlutterBlueManager {
       }
     }
     lock.unlock();
+    _autoConnectHandled.remove(uuid);
   }
 
   void _removeOldScanResults() {
