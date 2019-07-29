@@ -31,6 +31,7 @@ abstract class FBMConnection {
   Map<GlobalKey, FBMWriteData> _realTimeWrite = {};
   List<GlobalKey> _realTimeWriteKeys = [];
   bool _sendInProgress = false;
+  bool get isSending => _sendInProgress;
 
   FBMConnection(this.device) {
     device.device.state.listen(_onDeviceConnStateChange,
@@ -128,8 +129,10 @@ abstract class FBMConnection {
   }
 
   // transmission
+  GlobalKey _defaultRtKey = GlobalKey();
   /// transmit ASAP, if previous unsent, replace with new value
-  void realTimeWrite(GlobalKey key, FBMWriteData data) {
+  void realTimeWrite(FBMWriteData data, {GlobalKey key}) {
+    key = key ?? _defaultRtKey;
     _realTimeWrite[key] = data;
     if (!_realTimeWriteKeys.contains(key)) {
       _realTimeWriteKeys.add(key);

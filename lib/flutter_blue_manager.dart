@@ -54,6 +54,13 @@ class FlutterBlueManager {
   bool get bleBusy => _bleActionsBusy != null;
   StreamController<ScanResult> _visibleDevicesChanges;
   Stream<ScanResult> get visibleDevicesStream => _visibleDevicesChanges.stream;
+  int get nWriteReady {
+    int n = 0;
+    for (FBMDevice device in devices) {
+      if (device.writeReady) n++;
+    }
+    return n;
+  }
 
   Future<FBMLock> getBleLock() async {
     if (!bleBusy) {
@@ -129,6 +136,7 @@ class FlutterBlueManager {
     debug('handling auto connect', FBMDebugLevel.info);
     FBMLock lock = await getBleLock();
     FBMDevice device = _autoConnect[uuid];
+    if (device.scanResult == null) device.initFromScanResult(scanResult);
     if (device == null) {
       _autoConnectHandled.remove(uuid);
       lock.unlock();

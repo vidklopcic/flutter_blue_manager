@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter_blue/flutter_blue.dart';
 
 import 'fbm_connection.dart';
@@ -8,10 +9,12 @@ import 'flutter_blue_manager.dart';
 abstract class FBMDevice {
   final String uuid;
   final FlutterBlueManager fbm;
+  ScanResult scanResult;
 
   BluetoothDevice device;
 
   FBMDevice(this.uuid, this.fbm) {
+    assert (uuid != null);
     fbm.registerDevice(this);
     _writeReadyStreamController = StreamController.broadcast();
   }
@@ -37,4 +40,15 @@ abstract class FBMDevice {
   }
 
   FBMConnection createConnection();
+
+  @mustCallSuper
+  void initFromScanResult(ScanResult result) {
+    scanResult = result;
+  }
+
+  void disconnect() {
+    if (device == null) return;
+    fbm.cancelAutoConnect(this);
+    device.disconnect();
+  }
 }
