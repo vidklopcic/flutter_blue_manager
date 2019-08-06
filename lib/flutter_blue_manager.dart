@@ -30,6 +30,7 @@ class FlutterBlueManager {
     _ble.state.listen(_bleStateChange);
     _fbmStateMonitorTimer = Timer.periodic(Duration(seconds: 5), _fbmStateMonitor);
     _visibleDevicesChanges = StreamController.broadcast();
+    _disconnectConnectedOnPlatform();
   }
 
   int get _nowMs => DateTime.now().millisecondsSinceEpoch;
@@ -251,6 +252,13 @@ class FlutterBlueManager {
 
   void cancelAutoConnect(FBMDevice device) {
     if (_autoConnect.containsKey(device.uuid)) _autoConnect.remove(device.uuid);
+  }
+  
+  Future _disconnectConnectedOnPlatform() async {
+    List<BluetoothDevice> devices = await _ble.connectedDevices;
+    for (BluetoothDevice device in devices) {
+      device.disconnect();
+    }
   }
 }
 
