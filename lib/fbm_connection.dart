@@ -21,6 +21,7 @@ class FBMWriteData {
 }
 
 abstract class FBMConnection {
+  static const _WRITE_TIMEOUT = 5;    // seconds
   final FBMDevice device;
   BluetoothDeviceState _state = BluetoothDeviceState.disconnected;
   BluetoothDeviceState get state => _state;
@@ -165,7 +166,7 @@ abstract class FBMConnection {
     _sendInProgress = true;
     try {
       await data.characteristic
-          .write(data.data, withoutResponse: data.withoutResponse);
+          .write(data.data, withoutResponse: data.withoutResponse).timeout(Duration(seconds: _WRITE_TIMEOUT));
       if (data.callback != null) data.callback(true);
       _send();
     } catch (e) {
