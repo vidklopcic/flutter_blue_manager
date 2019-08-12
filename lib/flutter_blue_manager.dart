@@ -28,6 +28,7 @@ class FlutterBlueManager {
   FlutterBlueManager._() {
     _ble = FlutterBlue.instance;
     _ble.state.listen(_bleStateChange);
+    _ble.setLogLevel(LogLevel.critical);
     _fbmStateMonitorTimer = Timer.periodic(Duration(seconds: 5), _fbmStateMonitor);
     _visibleDevicesChanges = StreamController.broadcast();
     _disconnectConnectedOnPlatform();
