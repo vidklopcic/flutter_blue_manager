@@ -17,6 +17,7 @@ class FlutterBlueManager {
   static const _CONNECT_TIMEOUT_S = 5;
   static const _SCAN_RESULT_TIMEOUT_MS = 5000;
   static const _TAG = "FBM";
+  int chunkSize;
 
   List<FBMDebugLevel> _debugFilter = FBMDebugLevel.values;
 

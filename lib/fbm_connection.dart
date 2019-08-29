@@ -165,8 +165,13 @@ abstract class FBMConnection {
     assert(data.characteristic != null);
     _sendInProgress = true;
     try {
-      await data.characteristic
-          .write(data.data, withoutResponse: data.withoutResponse).timeout(Duration(seconds: _WRITE_TIMEOUT));
+      int chunkSz = flutterBlueManager.chunkSize == null ? data.data.length : flutterBlueManager.chunkSize;
+      int len = data.data.length;
+      for (int i=0;i<len;i+=chunkSz) {
+        List<int> chunk = data.data.sublist(i, (i+chunkSz).clamp(0, len));
+        await data.characteristic
+            .write(chunk, withoutResponse: data.withoutResponse).timeout(Duration(seconds: _WRITE_TIMEOUT));
+      }
       if (data.callback != null) data.callback(true);
       _send();
     } catch (e) {
