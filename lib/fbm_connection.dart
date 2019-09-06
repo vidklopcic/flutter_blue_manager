@@ -175,7 +175,7 @@ abstract class FBMConnection {
       if (data.callback != null) data.callback(true);
       _send();
     } catch (e) {
-      device.fbm.debug("error writing characteristic ${data.characteristic}",
+      device.fbm.debug("error writing characteristic ${data.characteristic}, e: $e",
           FBMDebugLevel.error);
       if (data.callback != null) data.callback(false);
       _cancelWriteQueue();
