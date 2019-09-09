@@ -32,6 +32,7 @@ class FlutterBlueManager {
     _ble.setLogLevel(LogLevel.critical);
     _fbmStateMonitorTimer = Timer.periodic(Duration(seconds: 5), _fbmStateMonitor);
     _visibleDevicesChanges = StreamController.broadcast();
+    writeReadyChangeController = StreamController.broadcast();
     _disconnectConnectedOnPlatform();
   }
 
@@ -57,6 +58,8 @@ class FlutterBlueManager {
   bool get bleBusy => _bleActionsBusy != null;
   StreamController<ScanResult> _visibleDevicesChanges;
   Stream<ScanResult> get visibleDevicesStream => _visibleDevicesChanges.stream;
+  StreamController<FBMDevice> writeReadyChangeController;
+  Stream<FBMDevice> get writeReadyChange => writeReadyChangeController.stream;
   int get nWriteReady {
     int n = 0;
     for (FBMDevice device in devices) {
