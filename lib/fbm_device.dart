@@ -28,6 +28,7 @@ abstract class FBMDevice {
     if (_writeReady != ready) {
       _writeReadyStreamController.add(ready);
       _writeReady = ready;
+      fbm.writeReadyChangeController.add(this);
     }
   }
 
