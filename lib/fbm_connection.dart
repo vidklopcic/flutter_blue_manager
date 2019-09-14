@@ -2,9 +2,8 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_blue/flutter_blue.dart';
-
+import 'package:flutter/services.dart';
 import 'fbm_device.dart';
-import 'fbm_device_state.dart';
 import 'flutter_blue_manager.dart';
 
 typedef void FBMWriteEvent(bool successful);
@@ -21,9 +20,11 @@ class FBMWriteData {
 }
 
 abstract class FBMConnection {
-  static const _WRITE_TIMEOUT = 5;    // seconds
+  static const _WRITE_TIMEOUT = 5; // seconds
+  static const _CHARACTERISTIC_POLL_MS = 100;
   final FBMDevice device;
   BluetoothDeviceState _state = BluetoothDeviceState.disconnected;
+
   BluetoothDeviceState get state => _state;
 
   List<BluetoothService> services = [];
@@ -32,6 +33,7 @@ abstract class FBMConnection {
   Map<GlobalKey, FBMWriteData> _realTimeWrite = {};
   List<GlobalKey> _realTimeWriteKeys = [];
   bool _sendInProgress = false;
+
   bool get isSending => _sendInProgress;
 
   FBMConnection(this.device) {
@@ -131,6 +133,7 @@ abstract class FBMConnection {
 
   // transmission
   GlobalKey _defaultRtKey = GlobalKey();
+
   /// transmit ASAP, if previous unsent, replace with new value
   void realTimeWrite(FBMWriteData data, {GlobalKey key}) {
     key = key ?? _defaultRtKey;
@@ -164,23 +167,49 @@ abstract class FBMConnection {
     }
     assert(data.characteristic != null);
     _sendInProgress = true;
-    try {
-      int chunkSz = flutterBlueManager.chunkSize == null ? data.data.length : flutterBlueManager.chunkSize;
-      int len = data.data.length;
-      for (int i=0;i<len;i+=chunkSz) {
-        List<int> chunk = data.data.sublist(i, (i+chunkSz).clamp(0, len));
-        await data.characteristic
-            .write(chunk, withoutResponse: data.withoutResponse).timeout(Duration(seconds: _WRITE_TIMEOUT));
+
+    int chunkSz = flutterBlueManager.chunkSize == null
+        ? data.data.length
+        : flutterBlueManager.chunkSize;
+    int len = data.data.length;
+    for (int i = 0; i < len; i += chunkSz) {
+      List<int> chunk = data.data.sublist(i, (i + chunkSz).clamp(0, len));
+
+      for (int i=0;i<_WRITE_TIMEOUT*1000/_CHARACTERISTIC_POLL_MS;i++) {
+        try {
+          await data.characteristic
+              .write(chunk, withoutResponse: data.withoutResponse)
+              .timeout(Duration(seconds: _WRITE_TIMEOUT));
+        } on PlatformException catch (e) {
+          if (e.code == 'writeCharacteristicNotReady') {
+            print('waiting characteristic ready');
+            await Future.delayed(Duration(milliseconds: _CHARACTERISTIC_POLL_MS));
+            continue;
+          } else {
+            _cancelSend(data);
+            device.fbm.debug(
+                "error writing characteristic ${data.characteristic}, e: $e",
+                FBMDebugLevel.error);
+            return;
+          }
+        } catch (e) {
+          _cancelSend(data);
+          device.fbm.debug(
+              "error writing characteristic ${data.characteristic}, e: $e",
+              FBMDebugLevel.error);
+          return;
+        }
+        break;
       }
-      if (data.callback != null) data.callback(true);
-      _send();
-    } catch (e) {
-      device.fbm.debug("error writing characteristic ${data.characteristic}, e: $e",
-          FBMDebugLevel.error);
-      if (data.callback != null) data.callback(false);
-      _cancelWriteQueue();
-      _sendInProgress = false;
     }
+    if (data.callback != null) data.callback(true);
+    _send();
+  }
+
+  void _cancelSend(FBMWriteData data) {
+    if (data.callback != null) data.callback(false);
+    _cancelWriteQueue();
+    _sendInProgress = false;
   }
 
   FBMWriteData _fetchNextFBMWriteDeta() {
