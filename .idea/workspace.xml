@@ -2,12 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="818055a9-afe7-44bb-b738-21c5f30594eb" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/example/pubspec.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/fbm_connection.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/fbm_connection.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/fbm_device.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/fbm_device.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/flutter_blue_manager.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/flutter_blue_manager.dart" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.dart_tool/" />
     <ignored path="$PROJECT_DIR$/.idea/" />
@@ -23,11 +21,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lib/flutter_blue_manager.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="266">
-              <caret line="27" selection-start-line="27" selection-end-line="27" />
+            <state relative-caret-position="253">
+              <caret line="83" column="20" selection-start-line="83" selection-start-column="20" selection-end-line="83" selection-end-column="20" />
               <folding>
                 <element signature="e#0#20#0" expanded="true" />
               </folding>
@@ -38,8 +36,11 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lib/fbm_device.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="42">
-              <caret line="3" column="47" selection-start-line="3" selection-start-column="47" selection-end-line="3" selection-end-column="47" />
+            <state relative-caret-position="577">
+              <caret line="63" column="7" lean-forward="true" selection-start-line="63" selection-start-column="7" selection-end-line="63" selection-end-column="30" />
+              <folding>
+                <element signature="e#0#20#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -53,11 +54,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/lib/fbm_connection.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2226">
-              <caret line="165" column="13" selection-start-line="165" selection-start-column="13" selection-end-line="165" selection-end-column="13" />
+            <state relative-caret-position="261">
+              <caret line="99" column="26" selection-start-line="99" selection-start-column="6" selection-end-line="99" selection-end-column="26" />
               <folding>
                 <element signature="e#0#20#0" expanded="true" />
               </folding>
@@ -121,23 +122,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>disco</find>
-      <find>conn state =</find>
-      <find>sending</find>
-      <find>handleauto</find>
-      <find>handleautocom</find>
-      <find>initf</find>
-      <find>createconn</find>
-      <find>regist</find>
-      <find>connect</find>
-      <find>autoconnect</find>
-      <find>start</find>
-      <find>startscan</find>
-      <find>_send</find>
-      <find>_send(</find>
-      <find>write_tim</find>
-      <find>autoconnect:</find>
-      <find>.instance</find>
       <find>versioncode</find>
       <find>get</find>
       <find>connected</find>
@@ -149,8 +133,25 @@
       <find>.close</find>
       <find>send</find>
       <find>platfo</find>
-      <find>_CHARACTERISTIC_POLL_MS</find>
       <find>update</find>
+      <find>disconnected</find>
+      <find>disco</find>
+      <find>_state</find>
+      <find>services =</find>
+      <find>waitingc</find>
+      <find>_CHARACTERISTIC_POLL_MS</find>
+      <find>.disconnect(</find>
+      <find>d</find>
+      <find>handleauto</find>
+      <find>pause</find>
+      <find>connect</find>
+      <find>connecton</find>
+      <find>servicesdisc</find>
+      <find>state == conn</find>
+      <find>State ==</find>
+      <find>updateConnectRetryDelay</find>
+      <find>_onDeviceConnStateChange</find>
+      <find>onServicesDiscovered</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -160,17 +161,17 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/lib/fbm_device_state.dart" />
-        <option value="$PROJECT_DIR$/lib/fbm_device.dart" />
         <option value="$PROJECT_DIR$/example/lib/main.dart" />
-        <option value="$PROJECT_DIR$/lib/flutter_blue_manager.dart" />
         <option value="$PROJECT_DIR$/pubspec.yaml" />
+        <option value="$PROJECT_DIR$/lib/fbm_device.dart" />
+        <option value="$PROJECT_DIR$/lib/flutter_blue_manager.dart" />
         <option value="$PROJECT_DIR$/lib/fbm_connection.dart" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6" fullScreen="true">
-    <option name="width" value="1680" />
-    <option name="height" value="1050" />
+    <option name="width" value="1920" />
+    <option name="height" value="1200" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -270,7 +271,7 @@
       <window_info id="Capture Tool" order="7" />
       <window_info id="Favorites" order="8" side_tool="true" />
       <window_info anchor="bottom" id="Dart Analysis" order="0" weight="0.2657758" />
-      <window_info anchor="bottom" id="Run" order="1" />
+      <window_info active="true" anchor="bottom" id="Run" order="1" visible="true" weight="0.32971996" />
       <window_info anchor="bottom" id="TODO" order="2" />
       <window_info anchor="bottom" id="Android Profiler" order="3" show_stripe_button="false" />
       <window_info anchor="bottom" id="Logcat" order="4" />
@@ -373,37 +374,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/flutter_blue_manager.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="266">
-          <caret line="27" selection-start-line="27" selection-end-line="27" />
-          <folding>
-            <element signature="e#0#20#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/fbm_device.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="42">
-          <caret line="3" column="47" selection-start-line="3" selection-start-column="47" selection-end-line="3" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/pubspec.yaml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="308">
           <caret line="22" selection-start-line="22" selection-end-line="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/fbm_connection.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2226">
-          <caret line="165" column="13" selection-start-line="165" selection-start-column="13" selection-end-line="165" selection-end-column="13" />
-          <folding>
-            <element signature="e#0#20#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -439,6 +413,36 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1218">
           <caret line="89" column="35" selection-start-line="89" selection-start-column="35" selection-end-line="89" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/fbm_device.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="577">
+          <caret line="63" column="7" lean-forward="true" selection-start-line="63" selection-start-column="7" selection-end-line="63" selection-end-column="30" />
+          <folding>
+            <element signature="e#0#20#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/flutter_blue_manager.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="253">
+          <caret line="83" column="20" selection-start-line="83" selection-start-column="20" selection-end-line="83" selection-end-column="20" />
+          <folding>
+            <element signature="e#0#20#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/fbm_connection.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="261">
+          <caret line="99" column="26" selection-start-line="99" selection-start-column="6" selection-end-line="99" selection-end-column="26" />
+          <folding>
+            <element signature="e#0#20#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

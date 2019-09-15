@@ -16,6 +16,7 @@ class FlutterBlueManager {
   static const _MAX_RESULT_AGE_MS = 10000;
   static const _CONNECT_TIMEOUT_S = 5;
   static const _SCAN_RESULT_TIMEOUT_MS = 5000;
+  static const CONNECT_RETRY_DELAY_MS = 2000;
   static const _TAG = "FBM";
   int chunkSize;
 
@@ -79,8 +80,11 @@ class FlutterBlueManager {
     return FBMLock(_unlockBleActions);
   }
 
-  void clearCachedScanResults() {
-    _scanResults.clear();
+  void clearCachedScanResults(String uuid) {
+    if (uuid != null)
+      _scanResults.remove(uuid);
+    else
+      _scanResults.clear();
   }
 
   void setDebugFilter(List<FBMDebugLevel> levels) {
@@ -138,10 +142,11 @@ class FlutterBlueManager {
   Future _handleAutoConnect(ScanResult scanResult) async {
     String uuid = scanResult.device.id.toString();
     if (!_autoConnect.containsKey(uuid) || _autoConnectHandled.contains(uuid)) return;
+    FBMDevice device = _autoConnect[uuid];
+    if (device == null || device.pauseAutoConnect) return;
     _autoConnectHandled.add(uuid);
     debug('handling auto connect', FBMDebugLevel.info);
     FBMLock lock = await getBleLock();
-    FBMDevice device = _autoConnect[uuid];
     if (device.scanResult == null) device.initFromScanResult(scanResult);
     if (device == null) {
       _autoConnectHandled.remove(uuid);

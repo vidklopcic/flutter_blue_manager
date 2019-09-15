@@ -9,6 +9,14 @@ import 'flutter_blue_manager.dart';
 abstract class FBMDevice {
   final String uuid;
   final FlutterBlueManager fbm;
+
+  // settings
+  int connectRetryDelay = FlutterBlueManager.CONNECT_RETRY_DELAY_MS;
+  bool _pauseAutoConnect = false;
+  bool get pauseAutoConnect => DateTime.now().millisecondsSinceEpoch < doNotConnectBeforeTimestamp || _pauseAutoConnect;
+  set pauseAutoConnect(bool pause) => _pauseAutoConnect = pause == true;
+  int doNotConnectBeforeTimestamp = 0;
+
   ScanResult scanResult;
 
   BluetoothDevice device;
@@ -51,5 +59,9 @@ abstract class FBMDevice {
     if (device == null) return;
     fbm.cancelAutoConnect(this);
     device.disconnect();
+  }
+
+  void updateConnectRetryDelay() {
+    doNotConnectBeforeTimestamp = DateTime.now().millisecondsSinceEpoch + connectRetryDelay;
   }
 }

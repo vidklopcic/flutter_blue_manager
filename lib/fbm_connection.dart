@@ -21,7 +21,7 @@ class FBMWriteData {
 
 abstract class FBMConnection {
   static const _WRITE_TIMEOUT = 5; // seconds
-  static const _CHARACTERISTIC_POLL_MS = 100;
+  static const _CHARACTERISTIC_POLL_MS = 10;
   final FBMDevice device;
   BluetoothDeviceState _state = BluetoothDeviceState.disconnected;
 
@@ -60,8 +60,12 @@ abstract class FBMConnection {
         _discoverServices();
       }
     } else {
+      if (newState == BluetoothDeviceState.disconnected) {
+        device.updateConnectRetryDelay();
+      }
       device.writeReady = false;
     }
+    device.fbm.clearCachedScanResults(device.uuid);
 
     _state = newState;
     onDeviceStateChange();
@@ -182,7 +186,6 @@ abstract class FBMConnection {
               .timeout(Duration(seconds: _WRITE_TIMEOUT));
         } on PlatformException catch (e) {
           if (e.code == 'writeCharacteristicNotReady') {
-            print('waiting characteristic ready');
             await Future.delayed(Duration(milliseconds: _CHARACTERISTIC_POLL_MS));
             continue;
           } else {
