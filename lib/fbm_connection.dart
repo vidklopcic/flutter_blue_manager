@@ -21,6 +21,7 @@ class FBMWriteData {
 
 abstract class FBMConnection {
   static const _WRITE_TIMEOUT = 5; // seconds
+  static const DISCOVER_TIMEOUT = 5; // seconds
   static const _CHARACTERISTIC_POLL_MS = 10;
   final FBMDevice device;
   BluetoothDeviceState _state = BluetoothDeviceState.disconnected;
@@ -43,6 +44,11 @@ abstract class FBMConnection {
     device.connection = this;
   }
 
+  int _discoveringServicesStart;
+
+  int get msSinceStartedDiscovering => _discoveringServicesStart != null
+      ? DateTime.now().millisecondsSinceEpoch - _discoveringServicesStart
+      : 0;
   Future _discoveringServices;
 
   bool _turningOnNotifications = false;
@@ -78,6 +84,7 @@ abstract class FBMConnection {
       device.fbm.debug("discovering services reentry", FBMDebugLevel.error);
       return;
     }
+    _discoveringServicesStart = DateTime.now().millisecondsSinceEpoch;
     device.fbm.debug("discovering services", FBMDebugLevel.info);
     Completer completer = Completer();
     _discoveringServices = completer.future;
@@ -88,7 +95,7 @@ abstract class FBMConnection {
     List<BluetoothService> svcs;
     try {
       svcs =
-          await device.device.discoverServices().timeout(Duration(seconds: 5));
+          await device.device.discoverServices().timeout(Duration(seconds: DISCOVER_TIMEOUT));
     } catch (_) {
       device.fbm.debug("discovering services timeout", FBMDebugLevel.error);
       device.device.disconnect();
@@ -179,14 +186,17 @@ abstract class FBMConnection {
     for (int i = 0; i < len; i += chunkSz) {
       List<int> chunk = data.data.sublist(i, (i + chunkSz).clamp(0, len));
 
-      for (int i=0;i<_WRITE_TIMEOUT*1000/_CHARACTERISTIC_POLL_MS;i++) {
+      for (int i = 0;
+          i < _WRITE_TIMEOUT * 1000 / _CHARACTERISTIC_POLL_MS;
+          i++) {
         try {
           await data.characteristic
               .write(chunk, withoutResponse: data.withoutResponse)
               .timeout(Duration(seconds: _WRITE_TIMEOUT));
         } on PlatformException catch (e) {
           if (e.code == 'writeCharacteristicNotReady') {
-            await Future.delayed(Duration(milliseconds: _CHARACTERISTIC_POLL_MS));
+            await Future.delayed(
+                Duration(milliseconds: _CHARACTERISTIC_POLL_MS));
             continue;
           } else {
             _cancelSend(data);

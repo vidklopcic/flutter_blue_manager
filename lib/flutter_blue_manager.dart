@@ -14,7 +14,7 @@ typedef FBMDevice FBMNewDevice(String uuid);
 class FlutterBlueManager {
   static const _BLE_ACTIONS_BUSY_TIMEOUT_MS = 30000;
   static const _MAX_RESULT_AGE_MS = 10000;
-  static const _CONNECT_TIMEOUT_S = 5;
+  static const _CONNECT_TIMEOUT_S = 10;
   static const _SCAN_RESULT_TIMEOUT_MS = 5000;
   static const CONNECT_RETRY_DELAY_MS = 2000;
   static const _TAG = "FBM";
@@ -148,7 +148,7 @@ class FlutterBlueManager {
     debug('handling auto connect', FBMDebugLevel.info);
     FBMLock lock = await getBleLock();
     if (device.scanResult == null) device.initFromScanResult(scanResult);
-    if (device == null) {
+    if (scanResult.device == null) {
       _autoConnectHandled.remove(uuid);
       lock.unlock();
       return;
@@ -161,6 +161,7 @@ class FlutterBlueManager {
       connection = device.createConnection();
     _connections[uuid] = connection;
     try {
+      print('STARTED CONNECTING ${DateTime.now()}');
       await device.device.connect(autoConnect: false).timeout(Duration(seconds: _CONNECT_TIMEOUT_S));
     } catch (e) {
       debug("connect ${device.uuid} timeout", FBMDebugLevel.error);
@@ -170,6 +171,7 @@ class FlutterBlueManager {
         debug("connect_disconnect ${device.uuid} error", FBMDebugLevel.error);
       }
     }
+    print('STOPPED CONNECTING ${DateTime.now()}');
     lock.unlock();
     _autoConnectHandled.remove(uuid);
   }
@@ -258,12 +260,39 @@ class FlutterBlueManager {
       debug("FIXME! ble actions busy timeout", FBMDebugLevel.error);
       _unlockBleActions();
     }
+
+    _syncWithPlatform();
+
+    for (FBMConnection connection in _connections.values) {
+      if (connection.state != BluetoothDeviceState.connected) continue;
+      if (connection.msSinceStartedDiscovering > FBMConnection.DISCOVER_TIMEOUT*1.1) {
+        if (connection.services != null) return;
+        connection.device?.device?.disconnect();
+        debug("discovering services not completed after timeout", FBMDebugLevel.error);
+      }
+    }
   }
 
   void cancelAutoConnect(FBMDevice device) {
     if (_autoConnect.containsKey(device.uuid)) _autoConnect.remove(device.uuid);
   }
   
+  Future _syncWithPlatform() async {
+    List<BluetoothDevice> devices = await _ble.connectedDevices;
+    for (BluetoothDevice device in devices) {
+      String uuid = device.id.toString();
+      if (!_connections.containsKey(uuid)) {
+        device.disconnect();
+        debug("device on platform unregistered!", FBMDebugLevel.error);
+        continue;
+      }
+      if (_connections[uuid].state != BluetoothDeviceState.connected) {
+        debug("device on platform connected, but disconnected here!", FBMDebugLevel.error);
+        device.disconnect();
+      }
+    }
+  }
+
   Future _disconnectConnectedOnPlatform() async {
     List<BluetoothDevice> devices = await _ble.connectedDevices;
     for (BluetoothDevice device in devices) {
