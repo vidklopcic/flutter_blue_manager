@@ -55,6 +55,7 @@ abstract class FBMConnection {
 
   void _onDeviceConnStateChange(BluetoothDeviceState newState) {
     if (newState == state) return;
+    _state = newState;
     device.fbm.debug(
         "device ${device.uuid} conn state = $newState", FBMDebugLevel.info);
     if (newState == BluetoothDeviceState.connected) {
@@ -72,16 +73,18 @@ abstract class FBMConnection {
       device.writeReady = false;
     }
     device.fbm.clearCachedScanResults(device.uuid);
-
-    _state = newState;
     onDeviceStateChange();
   }
 
   void onDeviceStateChange();
 
-  void _discoverServices() async {
+  Future _discoverServices({int retryN=0}) async {
     if (_discoveringServices != null) {
       device.fbm.debug("discovering services reentry", FBMDebugLevel.error);
+      return;
+    }
+    if (state != BluetoothDeviceState.connected) {
+      device.fbm.debug("cannot discover services - disconencted!", FBMDebugLevel.error);
       return;
     }
     _discoveringServicesStart = DateTime.now().millisecondsSinceEpoch;
@@ -89,24 +92,29 @@ abstract class FBMConnection {
     Completer completer = Completer();
     _discoveringServices = completer.future;
     FBMLock lock = await device.fbm.getBleLock();
-    device.fbm
-        .debug("discovering services - lock acquired", FBMDebugLevel.info);
-
+    device.fbm.debug("discovering services - lock acquired", FBMDebugLevel.info);
+    if (flutterBlueManager.discoverServicesDelayMs != null && flutterBlueManager.discoverServicesDelayMs > 0) {
+      device.fbm.debug("discovering services - wait ${flutterBlueManager.discoverServicesDelayMs}ms", FBMDebugLevel.info);
+      await Future.delayed(Duration(milliseconds: flutterBlueManager.discoverServicesDelayMs));
+    }
     List<BluetoothService> svcs;
     try {
       svcs =
           await device.device.discoverServices().timeout(Duration(seconds: DISCOVER_TIMEOUT));
     } catch (_) {
       device.fbm.debug("discovering services timeout", FBMDebugLevel.error);
-      device.device.disconnect();
     }
     lock.unlock();
     _discoveringServices = null;
-    if (svcs != null) {
+    completer.complete();
+
+    if (svcs != null && svcs.length > 0) {
       services = svcs;
       onServicesDiscovered();
+    } else if (retryN < flutterBlueManager.discoverServicesNRetries) {
+      device.fbm.debug("rediscover services, retryN: $retryN", FBMDebugLevel.error);
+      _discoverServices(retryN: retryN+1);
     }
-    completer.complete();
   }
 
   Future<bool> turnOnNotifications(
