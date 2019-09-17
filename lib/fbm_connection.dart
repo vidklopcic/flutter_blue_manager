@@ -62,12 +62,20 @@ abstract class FBMConnection {
       if (_discoveringServices != null) {
         device.fbm.debug("already discovering - discover after first finishes!",
             FBMDebugLevel.info);
-        _discoveringServices.then((_) => _discoverServices());
+        _discoveringServices.then((_) {
+          if (services != null && services.length > 0) {
+            device.fbm.debug("discovery stopped - already discovered from previous run!",
+                FBMDebugLevel.info);
+            return;
+          }
+          _discoverServices();
+        });
       } else {
         _discoverServices();
       }
     } else {
       if (newState == BluetoothDeviceState.disconnected) {
+        services = null;
         device.updateConnectRetryDelay();
       }
       device.writeReady = false;
@@ -78,32 +86,20 @@ abstract class FBMConnection {
 
   void onDeviceStateChange();
 
-  Future _discoverServices({int retryN=0}) async {
+  Future _discoverServices() async {
     if (_discoveringServices != null) {
       device.fbm.debug("discovering services reentry", FBMDebugLevel.error);
       return;
     }
-    if (state != BluetoothDeviceState.connected) {
-      device.fbm.debug("cannot discover services - disconencted!", FBMDebugLevel.error);
-      return;
-    }
-    _discoveringServicesStart = DateTime.now().millisecondsSinceEpoch;
+
     device.fbm.debug("discovering services", FBMDebugLevel.info);
     Completer completer = Completer();
     _discoveringServices = completer.future;
     FBMLock lock = await device.fbm.getBleLock();
     device.fbm.debug("discovering services - lock acquired", FBMDebugLevel.info);
-    if (flutterBlueManager.discoverServicesDelayMs != null && flutterBlueManager.discoverServicesDelayMs > 0) {
-      device.fbm.debug("discovering services - wait ${flutterBlueManager.discoverServicesDelayMs}ms", FBMDebugLevel.info);
-      await Future.delayed(Duration(milliseconds: flutterBlueManager.discoverServicesDelayMs));
-    }
-    List<BluetoothService> svcs;
-    try {
-      svcs =
-          await device.device.discoverServices().timeout(Duration(seconds: DISCOVER_TIMEOUT));
-    } catch (_) {
-      device.fbm.debug("discovering services timeout", FBMDebugLevel.error);
-    }
+
+    List<BluetoothService> svcs = await _discoverServicesInternal();
+
     lock.unlock();
     _discoveringServices = null;
     completer.complete();
@@ -111,10 +107,35 @@ abstract class FBMConnection {
     if (svcs != null && svcs.length > 0) {
       services = svcs;
       onServicesDiscovered();
-    } else if (retryN < flutterBlueManager.discoverServicesNRetries) {
-      device.fbm.debug("rediscover services, retryN: $retryN", FBMDebugLevel.error);
-      _discoverServices(retryN: retryN+1);
+    } else {
+      device.fbm.debug("discover services error (${services == null ? 'services are null' : 'service len is 0'})", FBMDebugLevel.error);
+      device.device.disconnect();
     }
+  }
+
+  Future<List<BluetoothService>> _discoverServicesInternal() async {
+    for (int i=0;i<flutterBlueManager.discoverServicesNRetries;i++) {
+      _discoveringServicesStart = DateTime.now().millisecondsSinceEpoch;
+      if (flutterBlueManager.discoverServicesDelayMs != null && flutterBlueManager.discoverServicesDelayMs > 0) {
+        device.fbm.debug("discovering services - wait ${flutterBlueManager.discoverServicesDelayMs}ms", FBMDebugLevel.info);
+        await Future.delayed(Duration(milliseconds: flutterBlueManager.discoverServicesDelayMs));
+      }
+      List<BluetoothService> svcs;
+      try {
+        svcs = await device.device.discoverServices().timeout(Duration(seconds: DISCOVER_TIMEOUT));
+      } catch (_) {
+        device.fbm.debug("discovering services timeout", FBMDebugLevel.error);
+      }
+      if (svcs != null && svcs.length > 0) {
+        return svcs;
+      }
+      if (state != BluetoothDeviceState.connected) {
+        device.fbm.debug("cannot discover services - disconencted!", FBMDebugLevel.error);
+        return null;
+      }
+      device.fbm.debug("rediscover services try $i (${services == null ? 'services are null' : 'service len is 0'})", FBMDebugLevel.error);
+    }
+    return null;
   }
 
   Future<bool> turnOnNotifications(

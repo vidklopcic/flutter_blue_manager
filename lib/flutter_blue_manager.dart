@@ -24,7 +24,7 @@ class FlutterBlueManager {
   /// user settings
   int connectDelayMs = 1;
   int discoverServicesDelayMs = 1000;
-  int discoverServicesNRetries = 3;
+  int discoverServicesNRetries = 5;
   int chunkSize;
 
   // internal
@@ -187,7 +187,7 @@ class FlutterBlueManager {
     try {
       print('STARTED CONNECTING ${DateTime.now()}');
       await device.device
-          .connect(autoConnect: false)
+          .connect(autoConnect: true)
           .timeout(Duration(seconds: _CONNECT_TIMEOUT_S));
     } catch (e) {
       debug("connect ${device.uuid} timeout", FBMDebugLevel.error);
@@ -289,16 +289,6 @@ class FlutterBlueManager {
 
     _syncWithPlatform();
 
-    for (FBMConnection connection in _connections.values) {
-      if (connection.state != BluetoothDeviceState.connected) continue;
-      if (connection.msSinceStartedDiscovering >
-          FBMConnection.DISCOVER_TIMEOUT * 1.1) {
-        if (connection.services != null) return;
-        connection.device?.device?.disconnect();
-        debug("discovering services not completed after timeout",
-            FBMDebugLevel.error);
-      }
-    }
   }
 
   void cancelAutoConnect(FBMDevice device) {
