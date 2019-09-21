@@ -15,7 +15,6 @@ typedef FBMDevice FBMNewDevice(String uuid);
 
 class FlutterBlueManager {
   static const _BLE_ACTIONS_BUSY_TIMEOUT_MS = 30000;
-  static const _MAX_RESULT_AGE_MS = 10000;
   static const _CONNECT_TIMEOUT_S = 10;
   static const _SCAN_RESULT_TIMEOUT_MS = 5000;
   static const CONNECT_RETRY_DELAY_MS = 2000;
@@ -25,6 +24,7 @@ class FlutterBlueManager {
   int connectDelayMs = 1;
   int discoverServicesDelayMs = 1000;
   int discoverServicesNRetries = 5;
+  int maxResultAgeMs = 3000;
   int chunkSize;
 
   // internal
@@ -203,11 +203,11 @@ class FlutterBlueManager {
   }
 
   void _removeOldScanResults() {
-    if (_nowMs - _lastClean > _MAX_RESULT_AGE_MS) {
+    if (_nowMs - _lastClean > maxResultAgeMs) {
       _lastClean = _nowMs;
       List<String> delete = new List();
       for (String key in _scanResults.keys) {
-        if (_scanResults[key].getAgeMilliseconds() < _MAX_RESULT_AGE_MS)
+        if (_scanResults[key].getAgeMilliseconds() < maxResultAgeMs)
           continue;
         delete.add(key);
         debug("scan result removed $key", FBMDebugLevel.info);
@@ -276,7 +276,8 @@ class FlutterBlueManager {
   }
 
   void _fbmStateMonitor(_) async {
-    if (_bleState != BluetoothState.on) return;
+    _removeOldScanResults();
+      if (_bleState != BluetoothState.on) return;
     if (_nowMs - _lastAdvertisementResult > _SCAN_RESULT_TIMEOUT_MS) {
       debug("scan timeout - restarting scan", FBMDebugLevel.info);
       _restartScan();

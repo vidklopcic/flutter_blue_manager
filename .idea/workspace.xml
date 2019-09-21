@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AndroidLogFilters">
+    <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="818055a9-afe7-44bb-b738-21c5f30594eb" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
@@ -23,8 +26,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lib/flutter_blue_manager.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="281">
-              <caret line="27" column="2" selection-start-line="27" selection-start-column="2" selection-end-line="27" selection-end-column="2" />
+            <state relative-caret-position="1530">
+              <caret line="186" column="9" selection-start-line="186" selection-start-column="9" selection-end-line="186" selection-end-column="9" />
               <folding>
                 <element signature="e#0#20#0" expanded="true" />
               </folding>
@@ -35,7 +38,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lib/fbm_device.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="658">
+            <state relative-caret-position="742">
               <caret line="53" column="7" selection-start-line="53" selection-start-column="7" selection-end-line="53" selection-end-column="7" />
               <folding>
                 <element signature="e#0#20#0" expanded="true" />
@@ -56,8 +59,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/lib/fbm_connection.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="212">
-              <caret line="26" column="52" selection-start-line="26" selection-start-column="32" selection-end-line="26" selection-end-column="65" />
+            <state relative-caret-position="141">
+              <caret line="72" column="14" lean-forward="true" selection-start-line="72" selection-start-column="14" selection-end-line="72" selection-end-column="14" />
               <folding>
                 <element signature="e#0#20#0" expanded="true" />
               </folding>
@@ -121,28 +124,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>_disconnectConnectedOnPlatform</find>
-      <find>sync</find>
-      <find>discoverServices</find>
-      <find>discoverser</find>
-      <find>timeout</find>
-      <find>.connect(</find>
-      <find>discovered</find>
-      <find>_discoveringServicesStart</find>
-      <find>error</find>
-      <find>not complete</find>
-      <find>handleautoconnect</find>
-      <find>connect</find>
-      <find>handleA</find>
-      <find>connectDelayMS</find>
-      <find>handleautoc</find>
-      <find>Instance of 'BluetoothService'</find>
-      <find>discoverservi</find>
-      <find>completer</find>
-      <find>_discoverServices</find>
-      <find>connectdela</find>
-      <find>onser</find>
-      <find>state ==</find>
       <find>redisc</find>
       <find>disconnect</find>
       <find>rediscover</find>
@@ -151,6 +132,28 @@
       <find>ng services - w</find>
       <find>.disconnected</find>
       <find>BluetoothDeviceState.disconnected</find>
+      <find>retryN</find>
+      <find>connect</find>
+      <find>reentr</find>
+      <find>_discoveringServicesStart</find>
+      <find>msSinceStartedDiscovering</find>
+      <find>discoverser</find>
+      <find>di</find>
+      <find>serv</find>
+      <find>services =</find>
+      <find>disconnected</find>
+      <find>State =</find>
+      <find>state =</find>
+      <find>discovering services not completed after timeo</find>
+      <find>expression</find>
+      <find>EXPRESSION</find>
+      <find>maxResultAgeMs</find>
+      <find>_removeOldScanResults</find>
+      <find>timer</find>
+      <find>.connect</find>
+      <find>state</find>
+      <find>State</find>
+      <find>;</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -168,9 +171,9 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" fullScreen="true">
-    <option name="width" value="1920" />
-    <option name="height" value="1200" />
+  <component name="ProjectFrameBounds" extendedState="6" fullScreen="true">
+    <option name="width" value="1680" />
+    <option name="height" value="1050" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -178,7 +181,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="AndroidView" />
       <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
@@ -196,6 +198,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="AndroidView" />
       <pane id="Scope" />
     </panes>
   </component>
@@ -267,14 +270,27 @@
       <option name="project" value="LOCAL" />
       <updated>1568659739026</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="retry service discovery, delay between connect and discover services">
+      <created>1568756558151</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1568756558151</updated>
+    </task>
+    <task id="LOCAL-00007" summary="removed redundant checks, improved discover services logic">
+      <created>1568759627943</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1568759627943</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1920" height="1200" extended-state="0" />
-    <editor active="true" />
+    <frame x="0" y="0" width="1920" height="1200" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.12034079" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.104898825" />
       <window_info id="Captures" order="1" side_tool="true" />
       <window_info id="Structure" order="2" side_tool="true" />
       <window_info id="Image Layers" order="3" />
@@ -284,11 +300,11 @@
       <window_info id="Capture Tool" order="7" />
       <window_info id="Favorites" order="8" side_tool="true" />
       <window_info anchor="bottom" id="Dart Analysis" order="0" weight="0.2657758" />
-      <window_info anchor="bottom" id="Run" order="1" weight="0.32971996" />
+      <window_info active="true" anchor="bottom" id="Run" order="1" visible="true" weight="0.32971996" />
       <window_info anchor="bottom" id="TODO" order="2" />
       <window_info anchor="bottom" id="Android Profiler" order="3" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Logcat" order="4" />
-      <window_info active="true" anchor="bottom" id="Debug" order="5" visible="true" weight="0.401084" />
+      <window_info anchor="bottom" id="Logcat" order="4" weight="0.32971996" />
+      <window_info anchor="bottom" id="Debug" order="5" weight="0.401084" />
       <window_info anchor="bottom" id="Terminal" order="6" weight="0.32971996" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Flutter Performance" order="8" side_tool="true" />
@@ -339,7 +355,9 @@
     <MESSAGE value="added option to send as small chunks" />
     <MESSAGE value="added option to delay reconnects (default is 2 seconds)" />
     <MESSAGE value="timeout tweaks, added additional state watchdog" />
-    <option name="LAST_COMMIT_MESSAGE" value="timeout tweaks, added additional state watchdog" />
+    <MESSAGE value="retry service discovery, delay between connect and discover services" />
+    <MESSAGE value="removed redundant checks, improved discover services logic" />
+    <option name="LAST_COMMIT_MESSAGE" value="removed redundant checks, improved discover services logic" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$USER_HOME$/development/flutter/bin/cache/dart-sdk/lib/collection/list.dart">
@@ -389,9 +407,19 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/lib/flutter_blue_manager.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1530">
+          <caret line="186" column="9" selection-start-line="186" selection-start-column="9" selection-end-line="186" selection-end-column="9" />
+          <folding>
+            <element signature="e#0#20#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/lib/fbm_device.dart">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="658">
+        <state relative-caret-position="742">
           <caret line="53" column="7" selection-start-line="53" selection-start-column="7" selection-end-line="53" selection-end-column="7" />
           <folding>
             <element signature="e#0#20#0" expanded="true" />
@@ -441,20 +469,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/flutter_blue_manager.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="281">
-          <caret line="27" column="2" selection-start-line="27" selection-start-column="2" selection-end-line="27" selection-end-column="2" />
-          <folding>
-            <element signature="e#0#20#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/lib/fbm_connection.dart">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="212">
-          <caret line="26" column="52" selection-start-line="26" selection-start-column="32" selection-end-line="26" selection-end-column="65" />
+        <state relative-caret-position="141">
+          <caret line="72" column="14" lean-forward="true" selection-start-line="72" selection-start-column="14" selection-end-line="72" selection-end-column="14" />
           <folding>
             <element signature="e#0#20#0" expanded="true" />
           </folding>
