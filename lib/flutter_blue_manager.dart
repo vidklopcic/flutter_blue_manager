@@ -98,9 +98,18 @@ class FlutterBlueManager {
     return FBMLock(_unlockBleActions);
   }
 
-  void clearCachedScanResults(String uuid) {
-    if (uuid != null)
-      _scanResults.remove(uuid);
+  Future clearCachedScanResults(String uuid, {Duration delay}) async {
+    if (uuid != null) {
+      if (delay != null) {
+        await Future.delayed(delay);
+        if (!_scanResults.containsKey(uuid)) return;
+        if (_scanResults[uuid].getAgeMilliseconds() > delay.inMilliseconds) {
+          _scanResults.remove(uuid);
+        }
+      } else {
+        _scanResults.remove(uuid);
+      }
+    }
     else
       _scanResults.clear();
   }

@@ -77,7 +77,7 @@ abstract class FBMConnection {
       if (newState == BluetoothDeviceState.disconnected) {
         services = null;
         device.updateConnectRetryDelay();
-        device.fbm.clearCachedScanResults(device.uuid);
+        device.fbm.clearCachedScanResults(device.uuid, delay: Duration(seconds: 1));
       }
       device.writeReady = false;
     }
