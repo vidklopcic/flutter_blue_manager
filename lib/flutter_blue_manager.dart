@@ -137,6 +137,11 @@ class FlutterBlueManager {
     } else {}
   }
 
+  void fakeScanResultUntilPotentiallyNewComes(ScanResult scanResult) {
+    String key = scanResult.device.id.toString();
+    _scanResults[key] = TimedScanResult(scanResult);
+  }
+
   void _onScanResult(ScanResult scanResult) {
     _handleAutoConnect(scanResult);
     _lastAdvertisementResult = _nowMs;

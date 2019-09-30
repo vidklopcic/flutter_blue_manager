@@ -23,11 +23,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lib/flutter_blue_manager.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="186">
-              <caret line="46" column="3" lean-forward="true" selection-start-line="46" selection-start-column="3" selection-end-line="46" selection-end-column="3" />
+            <state relative-caret-position="375">
+              <caret line="141" column="4" selection-start-line="141" selection-start-column="4" selection-end-line="141" selection-end-column="4" />
               <folding>
                 <element signature="e#0#20#0" expanded="true" />
               </folding>
@@ -38,8 +38,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lib/fbm_device.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="658">
-              <caret line="53" column="7" selection-start-line="53" selection-start-column="7" selection-end-line="53" selection-end-column="7" />
+            <state relative-caret-position="476">
+              <caret line="34" column="6" selection-start-line="34" selection-start-column="6" selection-end-line="34" selection-end-column="6" />
               <folding>
                 <element signature="e#0#20#0" expanded="true" />
               </folding>
@@ -56,11 +56,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/lib/fbm_connection.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="421">
-              <caret line="79" column="40" lean-forward="true" selection-start-line="79" selection-start-column="40" selection-end-line="79" selection-end-column="40" />
+            <state relative-caret-position="515">
+              <caret line="80" column="120" selection-start-line="80" selection-start-column="120" selection-end-line="80" selection-end-column="120" />
               <folding>
                 <element signature="e#0#20#0" expanded="true" />
               </folding>
@@ -124,24 +124,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>updateConnectRetryDelay</find>
-      <find>cannot</find>
-      <find>ng services - w</find>
-      <find>.disconnected</find>
-      <find>BluetoothDeviceState.disconnected</find>
-      <find>retryN</find>
-      <find>connect</find>
-      <find>reentr</find>
-      <find>_discoveringServicesStart</find>
-      <find>msSinceStartedDiscovering</find>
-      <find>discoverser</find>
-      <find>di</find>
-      <find>serv</find>
-      <find>services =</find>
-      <find>State =</find>
-      <find>state =</find>
-      <find>discovering services not completed after timeo</find>
-      <find>expression</find>
       <find>EXPRESSION</find>
       <find>maxResultAgeMs</find>
       <find>_removeOldScanResults</find>
@@ -152,8 +134,26 @@
       <find>;</find>
       <find>.remoe</find>
       <find>state = disco</find>
-      <find>disconnected</find>
       <find>clearCachedScanResults</find>
+      <find>settings</find>
+      <find>ser</find>
+      <find>ver</find>
+      <find>.</find>
+      <find>state =</find>
+      <find>clearcac</find>
+      <find>clearcachedsca</find>
+      <find>clear</find>
+      <find>handleautoconnec</find>
+      <find>handleAutoConnec</find>
+      <find>handleauto</find>
+      <find>_handleAutoConnect</find>
+      <find>dei</find>
+      <find>sca</find>
+      <find>.scanresul</find>
+      <find>timedscan</find>
+      <find>scanresults</find>
+      <find>disconnected</find>
+      <find>timedscanresult</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -166,14 +166,15 @@
         <option value="$PROJECT_DIR$/example/lib/main.dart" />
         <option value="$PROJECT_DIR$/pubspec.yaml" />
         <option value="$PROJECT_DIR$/lib/fbm_device.dart" />
-        <option value="$PROJECT_DIR$/lib/fbm_connection.dart" />
         <option value="$PROJECT_DIR$/lib/flutter_blue_manager.dart" />
+        <option value="$PROJECT_DIR$/lib/fbm_connection.dart" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" fullScreen="true">
-    <option name="width" value="1680" />
-    <option name="height" value="1050" />
+  <component name="ProjectFrameBounds" extendedState="6" fullScreen="true">
+    <option name="y" value="-1200" />
+    <option name="width" value="1920" />
+    <option name="height" value="1200" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -181,8 +182,9 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="AndroidView" />
+      <pane id="PackagesPane" />
       <pane id="Scope" />
+      <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -199,7 +201,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -291,14 +292,21 @@
       <option name="project" value="LOCAL" />
       <updated>1569056352110</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="delay before remove on disconnect (todo: user settable)">
+      <created>1569237220866</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1569237220866</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1920" height="1200" extended-state="0" />
+    <frame x="-381" y="-1440" width="2560" height="1440" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.104898825" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.067911044" />
       <window_info id="Captures" order="1" side_tool="true" />
       <window_info id="Structure" order="2" side_tool="true" />
       <window_info id="Image Layers" order="3" />
@@ -366,7 +374,8 @@
     <MESSAGE value="retry service discovery, delay between connect and discover services" />
     <MESSAGE value="removed redundant checks, improved discover services logic" />
     <MESSAGE value="move maxResultAgeMs to user config, fix clear results only on disconnected" />
-    <option name="LAST_COMMIT_MESSAGE" value="move maxResultAgeMs to user config, fix clear results only on disconnected" />
+    <MESSAGE value="delay before remove on disconnect (todo: user settable)" />
+    <option name="LAST_COMMIT_MESSAGE" value="delay before remove on disconnect (todo: user settable)" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$USER_HOME$/development/flutter/bin/cache/dart-sdk/lib/collection/list.dart">
@@ -416,16 +425,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/fbm_device.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="658">
-          <caret line="53" column="7" selection-start-line="53" selection-start-column="7" selection-end-line="53" selection-end-column="7" />
-          <folding>
-            <element signature="e#0#20#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/pubspec.yaml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="308">
@@ -468,20 +467,30 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/fbm_connection.dart">
+    <entry file="file://$PROJECT_DIR$/lib/flutter_blue_manager.dart">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="421">
-          <caret line="79" column="40" lean-forward="true" selection-start-line="79" selection-start-column="40" selection-end-line="79" selection-end-column="40" />
+        <state relative-caret-position="375">
+          <caret line="141" column="4" selection-start-line="141" selection-start-column="4" selection-end-line="141" selection-end-column="4" />
           <folding>
             <element signature="e#0#20#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/flutter_blue_manager.dart">
+    <entry file="file://$PROJECT_DIR$/lib/fbm_device.dart">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="186">
-          <caret line="46" column="3" lean-forward="true" selection-start-line="46" selection-start-column="3" selection-end-line="46" selection-end-column="3" />
+        <state relative-caret-position="476">
+          <caret line="34" column="6" selection-start-line="34" selection-start-column="6" selection-end-line="34" selection-end-column="6" />
+          <folding>
+            <element signature="e#0#20#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/fbm_connection.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="515">
+          <caret line="80" column="120" selection-start-line="80" selection-start-column="120" selection-end-line="80" selection-end-column="120" />
           <folding>
             <element signature="e#0#20#0" expanded="true" />
           </folding>
