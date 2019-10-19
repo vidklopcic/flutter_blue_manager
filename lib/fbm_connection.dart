@@ -78,7 +78,7 @@ abstract class FBMConnection {
         services = null;
         device.updateConnectRetryDelay();
         device.fbm.fakeScanResultUntilPotentiallyNewComes(device.scanResult);
-        device.fbm.clearCachedScanResults(device.uuid, delay: Duration(seconds: 1));    // FIXME user configurable delay
+        device.fbm.clearCachedScanResults(uuid: device.uuid, delay: Duration(seconds: 1));    // FIXME user configurable delay
       }
       device.writeReady = false;
     }

@@ -1,12 +1,8 @@
 import 'dart:async';
 import 'dart:ui';
-
-import 'package:flutter/services.dart';
 import 'package:flutter_blue/flutter_blue.dart';
-
 import 'fbm_connection.dart';
 import 'fbm_device.dart';
-import 'fbm_device_state.dart';
 
 enum FBMDebugLevel { error, info, event, action }
 
@@ -98,7 +94,7 @@ class FlutterBlueManager {
     return FBMLock(_unlockBleActions);
   }
 
-  Future clearCachedScanResults(String uuid, {Duration delay}) async {
+  Future clearCachedScanResults({String uuid, Duration delay}) async {
     if (uuid != null) {
       if (delay != null) {
         await Future.delayed(delay);
@@ -109,9 +105,9 @@ class FlutterBlueManager {
       } else {
         _scanResults.remove(uuid);
       }
-    }
-    else
+    } else {
       _scanResults.clear();
+    }
   }
 
   void setDebugFilter(List<FBMDebugLevel> levels) {
@@ -221,8 +217,7 @@ class FlutterBlueManager {
       _lastClean = _nowMs;
       List<String> delete = new List();
       for (String key in _scanResults.keys) {
-        if (_scanResults[key].getAgeMilliseconds() < maxResultAgeMs)
-          continue;
+        if (_scanResults[key].getAgeMilliseconds() < maxResultAgeMs) continue;
         delete.add(key);
         debug("scan result removed $key", FBMDebugLevel.info);
       }
@@ -291,7 +286,7 @@ class FlutterBlueManager {
 
   void _fbmStateMonitor(_) async {
     _removeOldScanResults();
-      if (_bleState != BluetoothState.on) return;
+    if (_bleState != BluetoothState.on) return;
     if (_nowMs - _lastAdvertisementResult > _SCAN_RESULT_TIMEOUT_MS) {
       debug("scan timeout - restarting scan", FBMDebugLevel.info);
       _restartScan();
@@ -303,7 +298,6 @@ class FlutterBlueManager {
     }
 
     _syncWithPlatform();
-
   }
 
   void cancelAutoConnect(FBMDevice device) {
