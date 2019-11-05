@@ -51,9 +51,11 @@ packages:
   flutter_blue:
     dependency: "direct main"
     description:
-      path: "/Users/vidklopcic/StudioProjects/flutter_blue"
-      relative: false
-    source: path
+      path: "."
+      ref: HEAD
+      resolved-ref: "01d55d68109087bb07829db5193b4188e3f09baf"
+      url: "git@github.com:vidklopcic/flutter_blue.git"
+    source: git
     version: "0.6.2"
   flutter_test:
     dependency: "direct dev"
@@ -80,7 +82,7 @@ packages:
       name: path
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.6.2"
+    version: "1.6.4"
   pedantic:
     dependency: transitive
     description:
@@ -101,7 +103,7 @@ packages:
       name: quiver
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.0.3"
+    version: "2.0.5"
   rxdart:
     dependency: transitive
     description:
@@ -141,7 +143,7 @@ packages:
       name: string_scanner
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.0.4"
+    version: "1.0.5"
   term_glyph:
     dependency: transitive
     description:

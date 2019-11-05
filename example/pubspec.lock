@@ -58,9 +58,11 @@ packages:
   flutter_blue:
     dependency: transitive
     description:
-      path: "/Users/vidklopcic/StudioProjects/flutter_blue"
-      relative: false
-    source: path
+      path: "."
+      ref: HEAD
+      resolved-ref: "01d55d68109087bb07829db5193b4188e3f09baf"
+      url: "git@github.com:vidklopcic/flutter_blue.git"
+    source: git
     version: "0.6.2"
   flutter_blue_manager:
     dependency: "direct dev"
