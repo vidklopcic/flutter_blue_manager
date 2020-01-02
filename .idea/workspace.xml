@@ -4,11 +4,7 @@
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="818055a9-afe7-44bb-b738-21c5f30594eb" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/android/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
-    </list>
+    <list default="true" id="818055a9-afe7-44bb-b738-21c5f30594eb" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/.dart_tool/" />
     <ignored path="$PROJECT_DIR$/.idea/" />
     <ignored path="$PROJECT_DIR$/.pub/" />
@@ -31,8 +27,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/lib/flutter_blue_manager.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="379">
-              <caret line="204" column="53" lean-forward="true" selection-start-line="204" selection-start-column="53" selection-end-line="204" selection-end-column="53" />
+            <state relative-caret-position="113">
+              <caret line="185" column="39" lean-forward="true" selection-start-line="185" selection-start-column="39" selection-end-line="185" selection-end-column="39" />
               <folding>
                 <element signature="e#0#20#0" expanded="true" />
               </folding>
@@ -41,19 +37,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/development/flutter/.pub-cache/git/flutter_blue-01d55d68109087bb07829db5193b4188e3f09baf/lib/src/bluetooth_device.dart">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="533">
-              <caret line="41" column="15" lean-forward="true" selection-start-line="41" selection-start-column="15" selection-end-line="41" selection-end-column="15" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pubspec.yaml">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="504">
-              <caret line="36" column="29" lean-forward="true" selection-start-line="36" selection-start-column="29" selection-end-line="36" selection-end-column="29" />
+              <caret line="36" column="29" selection-start-line="36" selection-start-column="29" selection-end-line="36" selection-end-column="29" />
             </state>
           </provider>
         </entry>
@@ -104,7 +91,7 @@
         <entry file="file://$USER_HOME$/development/flutter/bin/cache/pkg/sky_engine/lib/async/stream.dart">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="5194">
-              <caret line="375" lean-forward="true" selection-start-line="375" selection-end-line="375" />
+              <caret line="375" selection-start-line="375" selection-end-line="375" />
             </state>
           </provider>
         </entry>
@@ -211,9 +198,9 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
       <pane id="PackagesPane" />
       <pane id="AndroidView" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -334,11 +321,19 @@
       <option name="project" value="LOCAL" />
       <updated>1572974409940</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="migrated to androidX">
+      <created>1576788928311</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1576788928311</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1920" height="1200" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24600638" />
       <window_info id="Captures" order="1" side_tool="true" />
@@ -422,7 +417,8 @@
     <MESSAGE value="keep device visible for a second before showing offline (allows it to detect new ad packet)" />
     <MESSAGE value="breaking change - uuid positional for clear cached scan results" />
     <MESSAGE value="use flutter_blue from git repo" />
-    <option name="LAST_COMMIT_MESSAGE" value="use flutter_blue from git repo" />
+    <MESSAGE value="migrated to androidX" />
+    <option name="LAST_COMMIT_MESSAGE" value="migrated to androidX" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$USER_HOME$/development/flutter/bin/cache/dart-sdk/lib/collection/list.dart">
@@ -489,6 +485,20 @@
     <entry file="file://$PROJECT_DIR$/ios/Classes/FlutterBlueManagerPlugin.h">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
+    <entry file="file://$USER_HOME$/development/flutter/.pub-cache/git/flutter_blue-01d55d68109087bb07829db5193b4188e3f09baf/lib/src/bluetooth_device.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="546">
+          <caret line="41" column="15" selection-start-line="41" selection-start-column="15" selection-end-line="41" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pubspec.yaml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="504">
+          <caret line="36" column="29" selection-start-line="36" selection-start-column="29" selection-end-line="36" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/lib/fbm_device.dart">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="532">
@@ -526,7 +536,7 @@
     <entry file="file://$USER_HOME$/development/flutter/bin/cache/pkg/sky_engine/lib/async/stream.dart">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="5194">
-          <caret line="375" lean-forward="true" selection-start-line="375" selection-end-line="375" />
+          <caret line="375" selection-start-line="375" selection-end-line="375" />
         </state>
       </provider>
     </entry>
@@ -544,24 +554,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pubspec.yaml">
+    <entry file="file://$PROJECT_DIR$/example/ios/Flutter/flutter_export_environment.sh">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="504">
-          <caret line="36" column="29" lean-forward="true" selection-start-line="36" selection-start-column="29" selection-end-line="36" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/development/flutter/.pub-cache/git/flutter_blue-01d55d68109087bb07829db5193b4188e3f09baf/lib/src/bluetooth_device.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="533">
-          <caret line="41" column="15" lean-forward="true" selection-start-line="41" selection-start-column="15" selection-end-line="41" selection-end-column="15" />
+        <state relative-caret-position="112">
+          <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/flutter_blue_manager.dart">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="379">
-          <caret line="204" column="53" lean-forward="true" selection-start-line="204" selection-start-column="53" selection-end-line="204" selection-end-column="53" />
+        <state relative-caret-position="113">
+          <caret line="185" column="39" lean-forward="true" selection-start-line="185" selection-start-column="39" selection-end-line="185" selection-end-column="39" />
           <folding>
             <element signature="e#0#20#0" expanded="true" />
           </folding>
