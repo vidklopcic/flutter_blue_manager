@@ -2,7 +2,7 @@
   <library name="Flutter Plugins" type="FlutterPluginsLibraryType">
     <CLASSES>
       <root url="file://$PROJECT_DIR$" />
-      <root url="file://$USER_HOME$/development/flutter/.pub-cache/git/flutter_blue-01d55d68109087bb07829db5193b4188e3f09baf" />
+      <root url="file://$PROJECT_DIR$/../flutter_blue" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
