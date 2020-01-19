@@ -181,7 +181,7 @@ class FlutterBlueManager {
     debug('connecting ${scanResult.device?.name}', FBMDebugLevel.info);
 
     FBMLock lock = await getBleLock();
-    if (device.scanResult == null) device.initFromScanResult(scanResult);
+    device.initFromScanResult(scanResult);
     if (scanResult.device == null) {
       _autoConnectHandled.remove(uuid);
       lock.unlock();
@@ -248,6 +248,9 @@ class FlutterBlueManager {
       }, onDone: () {
         debug("ble scan ended", FBMDebugLevel.error);
         _restartScan();
+      },
+      onError: (error) {
+        debug("ble scan error: $error", FBMDebugLevel.error);
       });
       return true;
     } catch (e) {
