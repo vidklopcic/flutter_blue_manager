@@ -181,7 +181,7 @@ class FlutterBlueManager {
     debug('connecting ${scanResult.device?.name}', FBMDebugLevel.info);
 
     FBMLock lock = await getBleLock();
-    device.initFromScanResult(scanResult);
+    if (device.scanResult == null) device.initFromScanResult(scanResult);
     if (scanResult.device == null) {
       _autoConnectHandled.remove(uuid);
       lock.unlock();
