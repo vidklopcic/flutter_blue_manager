@@ -253,7 +253,7 @@ class FlutterBlueManager {
         }
       }, onDone: () {
         debug("ble scan ended", FBMDebugLevel.error);
-        _restartScan();
+        Future.delayed(Duration(seconds: 1)).then((value) => _restartScan());
       },
       onError: (error) {
         debug("ble scan error: $error", FBMDebugLevel.error);
