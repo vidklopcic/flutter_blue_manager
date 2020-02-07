@@ -23,6 +23,9 @@ class FlutterBlueManager {
   int maxResultAgeMs = 3000;
   int chunkSize;
 
+  StreamController<BluetoothState> _bleStateBroadcast;
+  Stream<BluetoothState> get bleState => _bleStateBroadcast.stream;
+
   // internal
   List<FBMDebugLevel> _debugFilter = FBMDebugLevel.values;
 
@@ -34,6 +37,7 @@ class FlutterBlueManager {
   BluetoothState _bleState;
 
   FlutterBlueManager._() {
+    _bleStateBroadcast = StreamController.broadcast();
     _ble = FlutterBlue.instance;
     _ble.state.listen(_bleStateChange);
     _ble.setLogLevel(LogLevel.critical);
@@ -130,6 +134,7 @@ class FlutterBlueManager {
   // EVENT LISTENERS
   void _bleStateChange(BluetoothState event) {
     _bleState = event;
+    _bleStateBroadcast.add(event);
     debug('bleStateChange: $event', FBMDebugLevel.event);
     if (_bleState == BluetoothState.on) {
       _restartScan();
