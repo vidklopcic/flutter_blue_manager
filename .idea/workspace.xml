@@ -7,8 +7,11 @@
     <list default="true" id="818055a9-afe7-44bb-b738-21c5f30594eb" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/android/gradle.properties" beforeDir="false" afterPath="$PROJECT_DIR$/example/android/gradle.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/example/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/example/pubspec.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/flutter_blue_manager.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/flutter_blue_manager.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.dart_tool/" />
     <ignored path="$PROJECT_DIR$/.idea/" />
@@ -25,41 +28,23 @@
   <component name="DefaultGradleProjectSettings">
     <option name="isMigrated" value="true" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="c7826118" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="192.168.0.156:5555" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$USER_HOME$/development/flutter/.pub-cache/git/flutter_blue-8e4740ffe445dd64e4058e721e5c1dc1453d521b/lib/src/bluetooth_device.dart">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="107">
-              <caret line="81" selection-start-line="81" selection-end-line="81" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/development/flutter/.pub-cache/git/flutter_blue-8e4740ffe445dd64e4058e721e5c1dc1453d521b/lib/src/flutter_blue.dart">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="70">
-              <caret line="7" column="9" selection-start-line="7" selection-start-column="9" selection-end-line="7" selection-end-column="9" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pubspec.yaml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="406">
-              <caret line="29" column="47" selection-start-line="29" selection-start-column="47" selection-end-line="29" selection-end-column="47" />
+            <state relative-caret-position="224">
+              <caret line="16" selection-start-line="16" selection-end-line="16" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lib/fbm_connection.dart">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/lib/flutter_blue_manager.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3836">
-              <caret line="280" column="21" selection-start-line="280" selection-start-column="7" selection-end-line="280" selection-end-column="21" />
+            <state relative-caret-position="443">
+              <caret line="312" column="48" selection-start-line="312" selection-start-column="48" selection-end-line="312" selection-end-column="48" />
               <folding>
                 <element signature="e#0#20#0" expanded="true" />
               </folding>
@@ -68,10 +53,34 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/development/flutter/.pub-cache/git/flutter_blue-cab23ab7ce5ad03267d490be0962dd4b72d5c7bc/lib/src/bluetooth_characteristic.dart">
+        <entry file="file://$PROJECT_DIR$/../flutter_blue/lib/src/flutter_blue.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1484">
-              <caret line="108" column="15" selection-start-line="108" selection-start-column="15" selection-end-line="108" selection-end-column="15" />
+            <state relative-caret-position="228">
+              <caret line="122" column="32" selection-start-line="122" selection-start-column="32" selection-end-line="122" selection-end-column="32" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lib/fbm_device.dart">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="364">
+              <caret line="50" column="16" selection-start-line="50" selection-start-column="16" selection-end-line="50" selection-end-column="16" />
+              <folding>
+                <element signature="e#0#20#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lib/fbm_connection.dart">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="233">
+              <caret line="39" column="2" selection-start-line="39" selection-start-column="2" selection-end-line="39" selection-end-column="15" />
+              <folding>
+                <element signature="e#0#20#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -94,24 +103,6 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/development/flutter/.pub-cache/git/flutter_blue-cab23ab7ce5ad03267d490be0962dd4b72d5c7bc/lib/src/flutter_blue.dart">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3038">
-              <caret line="219" column="14" selection-start-line="219" selection-start-column="8" selection-end-line="219" selection-end-column="14" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/development/flutter/.pub-cache/git/flutter_blue-cab23ab7ce5ad03267d490be0962dd4b72d5c7bc/lib/src/bluetooth_device.dart">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1218">
-              <caret line="89" column="35" selection-start-line="89" selection-start-column="35" selection-end-line="89" selection-end-column="35" />
-            </state>
-          </provider>
-        </entry>
-      </file>
     </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
@@ -123,29 +114,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>_SCAN_RESULT_TIMEOUT_MS</find>
-      <find>_debugFilter</find>
-      <find>se</find>
-      <find>clearcachedsca</find>
-      <find>clearCachedScanResults</find>
-      <find>cmd(</find>
-      <find>disconnect(</find>
-      <find>autoconnect</find>
-      <find>autoconnec</find>
-      <find>autoconnect(</find>
-      <find>onscanres</find>
-      <find>onservicesdisc</find>
-      <find>.scanresult</find>
-      <find>onscanre</find>
-      <find>timeout&quot;</find>
-      <find>.scan(</find>
-      <find>ondon</find>
-      <find>start(</find>
-      <find>scan</find>
-      <find>restartsca</find>
-      <find>fluter_b;</find>
-      <find>.scanresult =</find>
-      <find>initf</find>
       <find>stat</find>
       <find>connected</find>
       <find>initfrom</find>
@@ -153,6 +121,29 @@
       <find>mtu</find>
       <find>bluetoothdev</find>
       <find>requestmt</find>
+      <find>initfromscanresult(</find>
+      <find>handleautoconnect</find>
+      <find>bonded</find>
+      <find>fbmStatemon</find>
+      <find>.connec</find>
+      <find>monintor</find>
+      <find>services</find>
+      <find>_onDeviceConnStateChange</find>
+      <find>FBMConnection</find>
+      <find>FBMConnection(</find>
+      <find>handleauto</find>
+      <find>connection</find>
+      <find>seconds</find>
+      <find>seconds:</find>
+      <find>handleautocn</find>
+      <find>fakeScanResultUntilPotentiallyNewComes</find>
+      <find>handle</find>
+      <find>monitor</find>
+      <find>autoconnect</find>
+      <find>autoconnect(</find>
+      <find>AutoConnect(</find>
+      <find>updatebonded</find>
+      <find>compiles</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -170,11 +161,9 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-409" />
-    <option name="y" value="-1440" />
-    <option name="width" value="2560" />
-    <option name="height" value="1440" />
+  <component name="ProjectFrameBounds" fullScreen="true">
+    <option name="width" value="2048" />
+    <option name="height" value="1280" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -182,7 +171,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -199,8 +187,9 @@
           <select />
         </subPane>
       </pane>
-      <pane id="AndroidView" />
       <pane id="Scope" />
+      <pane id="AndroidView" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -360,10 +349,10 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-409" y="-1417" width="2560" height="1417" extended-state="6" />
+    <frame x="0" y="0" width="2048" height="1280" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.15885623" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.15852442" />
       <window_info id="Captures" order="1" side_tool="true" />
       <window_info id="Structure" order="2" side_tool="true" />
       <window_info id="Image Layers" order="3" />
@@ -377,13 +366,13 @@
       <window_info anchor="bottom" id="TODO" order="2" />
       <window_info anchor="bottom" id="Android Profiler" order="3" show_stripe_button="false" />
       <window_info anchor="bottom" id="Logcat" order="4" weight="0.32971996" />
-      <window_info anchor="bottom" id="Debug" order="5" weight="0.401084" />
+      <window_info active="true" anchor="bottom" id="Debug" order="5" visible="true" weight="0.40101096" />
       <window_info anchor="bottom" id="Terminal" order="6" weight="0.35248297" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Flutter Performance" order="8" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="9" weight="0.32940185" />
       <window_info anchor="bottom" id="Find" order="10" />
-      <window_info active="true" anchor="bottom" id="Messages" order="11" visible="true" weight="0.15898618" />
+      <window_info anchor="bottom" id="Messages" order="11" weight="0.15838248" />
       <window_info anchor="right" id="Device File Explorer" order="0" side_tool="true" />
       <window_info anchor="right" id="Capture Analysis" order="1" />
       <window_info anchor="right" id="Theme Preview" order="2" />
@@ -469,13 +458,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/development/flutter/.pub-cache/git/flutter_blue-608d646e98d5f3512c2d02cf740a630d4d5782ce/lib/src/flutter_blue.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="784">
-          <caret line="58" column="36" selection-start-line="58" selection-start-column="36" selection-end-line="58" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$USER_HOME$/development/flutter/.pub-cache/git/flutter_blue-608d646e98d5f3512c2d02cf740a630d4d5782ce/lib/src/flutter_blue.dart" />
     <entry file="file://$USER_HOME$/development/flutter/bin/cache/pkg/sky_engine/lib/async/future.dart">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="11900">
@@ -517,13 +500,7 @@
     <entry file="file://$PROJECT_DIR$/ios/Classes/FlutterBlueManagerPlugin.h">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$USER_HOME$/development/flutter/.pub-cache/git/flutter_blue-01d55d68109087bb07829db5193b4188e3f09baf/lib/src/bluetooth_device.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="546">
-          <caret line="41" column="15" selection-start-line="41" selection-start-column="15" selection-end-line="41" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$USER_HOME$/development/flutter/.pub-cache/git/flutter_blue-01d55d68109087bb07829db5193b4188e3f09baf/lib/src/bluetooth_device.dart" />
     <entry file="file://$PROJECT_DIR$/example/ios/Flutter/flutter_export_environment.sh">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="112">
@@ -531,30 +508,27 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/fbm_device.dart">
+    <entry file="file://$USER_HOME$/development/flutter/.pub-cache/git/flutter_blue-8e4740ffe445dd64e4058e721e5c1dc1453d521b/lib/src/bluetooth_device.dart">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="658">
-          <caret line="53" column="7" selection-start-line="53" selection-start-column="7" selection-end-line="53" selection-end-column="7" />
-          <folding>
-            <element signature="e#0#20#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="168">
+          <caret line="82" column="25" selection-start-line="82" selection-start-column="25" selection-end-line="82" selection-end-column="25" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/fbm_connection.dart">
+    <entry file="file://$USER_HOME$/development/flutter/.pub-cache/git/flutter_blue-8e4740ffe445dd64e4058e721e5c1dc1453d521b/lib/src/flutter_blue.dart">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3836">
-          <caret line="280" column="21" selection-start-line="280" selection-start-column="7" selection-end-line="280" selection-end-column="21" />
-          <folding>
-            <element signature="e#0#20#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="70">
+          <caret line="7" column="9" selection-start-line="7" selection-start-column="9" selection-end-line="7" selection-end-column="9" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/development/flutter/.pub-cache/git/flutter_blue-cab23ab7ce5ad03267d490be0962dd4b72d5c7bc/lib/src/bluetooth_characteristic.dart">
+    <entry file="file://$USER_HOME$/development/flutter/.pub-cache/git/flutter_blue-cab23ab7ce5ad03267d490be0962dd4b72d5c7bc/lib/src/bluetooth_characteristic.dart" />
+    <entry file="file://$USER_HOME$/development/flutter/.pub-cache/git/flutter_blue-cab23ab7ce5ad03267d490be0962dd4b72d5c7bc/lib/src/flutter_blue.dart" />
+    <entry file="file://$USER_HOME$/development/flutter/.pub-cache/git/flutter_blue-cab23ab7ce5ad03267d490be0962dd4b72d5c7bc/lib/src/bluetooth_device.dart" />
+    <entry file="file://$PROJECT_DIR$/pubspec.yaml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1484">
-          <caret line="108" column="15" selection-start-line="108" selection-start-column="15" selection-end-line="108" selection-end-column="15" />
+        <state relative-caret-position="224">
+          <caret line="16" selection-start-line="16" selection-end-line="16" />
         </state>
       </provider>
     </entry>
@@ -572,48 +546,40 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/development/flutter/.pub-cache/git/flutter_blue-cab23ab7ce5ad03267d490be0962dd4b72d5c7bc/lib/src/flutter_blue.dart">
+    <entry file="file://$PROJECT_DIR$/../flutter_blue/lib/src/flutter_blue.dart">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3038">
-          <caret line="219" column="14" selection-start-line="219" selection-start-column="8" selection-end-line="219" selection-end-column="14" />
+        <state relative-caret-position="228">
+          <caret line="122" column="32" selection-start-line="122" selection-start-column="32" selection-end-line="122" selection-end-column="32" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/development/flutter/.pub-cache/git/flutter_blue-cab23ab7ce5ad03267d490be0962dd4b72d5c7bc/lib/src/bluetooth_device.dart">
+    <entry file="file://$PROJECT_DIR$/lib/fbm_connection.dart">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1218">
-          <caret line="89" column="35" selection-start-line="89" selection-start-column="35" selection-end-line="89" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pubspec.yaml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="406">
-          <caret line="29" column="47" selection-start-line="29" selection-start-column="47" selection-end-line="29" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/development/flutter/.pub-cache/git/flutter_blue-8e4740ffe445dd64e4058e721e5c1dc1453d521b/lib/src/flutter_blue.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="70">
-          <caret line="7" column="9" selection-start-line="7" selection-start-column="9" selection-end-line="7" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/flutter_blue_manager.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="322">
-          <caret line="23" column="16" lean-forward="true" selection-start-line="23" selection-start-column="16" selection-end-line="23" selection-end-column="16" />
+        <state relative-caret-position="233">
+          <caret line="39" column="2" selection-start-line="39" selection-start-column="2" selection-end-line="39" selection-end-column="15" />
           <folding>
             <element signature="e#0#20#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/development/flutter/.pub-cache/git/flutter_blue-8e4740ffe445dd64e4058e721e5c1dc1453d521b/lib/src/bluetooth_device.dart">
+    <entry file="file://$PROJECT_DIR$/lib/fbm_device.dart">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="107">
-          <caret line="81" selection-start-line="81" selection-end-line="81" />
+        <state relative-caret-position="364">
+          <caret line="50" column="16" selection-start-line="50" selection-start-column="16" selection-end-line="50" selection-end-column="16" />
+          <folding>
+            <element signature="e#0#20#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/flutter_blue_manager.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="443">
+          <caret line="312" column="48" selection-start-line="312" selection-start-column="48" selection-end-line="312" selection-end-column="48" />
+          <folding>
+            <element signature="e#0#20#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

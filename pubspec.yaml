@@ -11,8 +11,8 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_blue:
-    git: git@github.com:vidklopcic/flutter_blue.git
-#     path: /Users/vidklopcic/StudioProjects/flutter_blue
+#    git: git@github.com:vidklopcic/flutter_blue.git
+     path: /Users/vidklopcic/StudioProjects/flutter_blue
 
 
 dev_dependencies:
