@@ -37,11 +37,20 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/lib/flutter_blue_manager.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="14">
-              <caret line="134" column="46" selection-start-line="134" selection-start-column="46" selection-end-line="134" selection-end-column="46" />
+            <state relative-caret-position="406">
+              <caret line="103" column="19" selection-start-line="103" selection-start-column="19" selection-end-line="103" selection-end-column="19" />
               <folding>
                 <element signature="e#0#20#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/android/build.gradle">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="126">
+              <caret line="9" column="18" selection-start-line="9" selection-start-column="18" selection-end-line="9" selection-end-column="18" />
             </state>
           </provider>
         </entry>
@@ -70,7 +79,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lib/fbm_connection.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="546">
+            <state relative-caret-position="462">
               <caret line="39" column="2" selection-start-line="39" selection-start-column="2" selection-end-line="39" selection-end-column="15" />
               <folding>
                 <element signature="e#0#20#0" expanded="true" />
@@ -108,11 +117,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>_onDeviceConnStateChange</find>
-      <find>FBMConnection</find>
-      <find>FBMConnection(</find>
-      <find>handleauto</find>
-      <find>connection</find>
       <find>seconds</find>
       <find>seconds:</find>
       <find>handleautocn</find>
@@ -138,6 +142,11 @@
       <find>monitor</find>
       <find>.list</find>
       <find>state =</find>
+      <find>appl</find>
+      <find>removesca</find>
+      <find>_scanResults</find>
+      <find>1.4.</find>
+      <find>check</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -156,8 +165,9 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" fullScreen="true">
-    <option name="width" value="2048" />
-    <option name="height" value="1280" />
+    <option name="y" value="23" />
+    <option name="width" value="1024" />
+    <option name="height" value="1208" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -165,9 +175,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="AndroidView" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -184,6 +191,9 @@
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
+      <pane id="AndroidView" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -558,6 +568,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/android/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="9" column="18" selection-start-line="9" selection-start-column="18" selection-end-line="9" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/../flutter_blue/lib/src/flutter_blue.dart">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="616">
@@ -577,7 +594,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/fbm_connection.dart">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="546">
+        <state relative-caret-position="462">
           <caret line="39" column="2" selection-start-line="39" selection-start-column="2" selection-end-line="39" selection-end-column="15" />
           <folding>
             <element signature="e#0#20#0" expanded="true" />
@@ -601,8 +618,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/flutter_blue_manager.dart">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="14">
-          <caret line="134" column="46" selection-start-line="134" selection-start-column="46" selection-end-line="134" selection-end-column="46" />
+        <state relative-caret-position="406">
+          <caret line="103" column="19" selection-start-line="103" selection-start-column="19" selection-end-line="103" selection-end-column="19" />
           <folding>
             <element signature="e#0#20#0" expanded="true" />
           </folding>
