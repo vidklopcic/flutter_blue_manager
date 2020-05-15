@@ -75,9 +75,9 @@ class FlutterBlueManager {
 
   // PUBLIC API
   bool get bleBusy => _bleActionsBusy != null;
-  StreamController<ScanResult> _visibleDevicesChanges;
+  StreamController<VisibleDeviceChange> _visibleDevicesChanges;
 
-  Stream<ScanResult> get visibleDevicesStream => _visibleDevicesChanges.stream;
+  Stream<VisibleDeviceChange> get visibleDevicesStream => _visibleDevicesChanges.stream;
   StreamController<FBMDevice> writeReadyChangeController;
 
   Stream<FBMDevice> get writeReadyChange => writeReadyChangeController.stream;
@@ -152,7 +152,7 @@ class FlutterBlueManager {
     _lastAdvertisementResult = _nowMs;
     String key = scanResult.device.id.toString();
     if (!_scanResults.containsKey(key)) {
-      _visibleDevicesChanges.add(scanResult);
+      _visibleDevicesChanges.add(VisibleDeviceChange(scanResult));
       debug("scan result added: $key", FBMDebugLevel.info);
     }
     _scanResults[key] = TimedScanResult(scanResult);
@@ -233,7 +233,7 @@ class FlutterBlueManager {
         debug("scan result removed $key", FBMDebugLevel.info);
       }
       for (String key in delete) {
-        _visibleDevicesChanges.add(_scanResults.remove(key).scanResult);
+        _visibleDevicesChanges.add(VisibleDeviceChange(_scanResults.remove(key).scanResult, removed: true));
       }
     }
   }
@@ -394,6 +394,13 @@ class TimedScanResult {
 
   ScanResult scanResult;
   int _lastAdvertisement;
+}
+
+class VisibleDeviceChange {
+  final bool removed;
+  final ScanResult scanResult;
+  VisibleDeviceChange(this.scanResult, {this.removed=false});
+
 }
 
 FlutterBlueManager flutterBlueManager = FlutterBlueManager._();
