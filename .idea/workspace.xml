@@ -4,7 +4,7 @@
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="818055a9-afe7-44bb-b738-21c5f30594eb" name="Default Changelist" comment="expose ble state as broadcast stream">
+    <list default="true" id="818055a9-afe7-44bb-b738-21c5f30594eb" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.dart_tool/" />
@@ -22,7 +22,7 @@
   <component name="DefaultGradleProjectSettings">
     <option name="isMigrated" value="true" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="LGH930110fd7cc" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="7.3_Foldable_API_29" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
@@ -37,8 +37,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/lib/flutter_blue_manager.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="406">
-              <caret line="103" column="19" selection-start-line="103" selection-start-column="19" selection-end-line="103" selection-end-column="19" />
+            <state relative-caret-position="-1296">
+              <caret line="154" column="63" selection-start-line="154" selection-start-column="63" selection-end-line="154" selection-end-column="63" />
               <folding>
                 <element signature="e#0#20#0" expanded="true" />
               </folding>
@@ -117,9 +117,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>seconds</find>
-      <find>seconds:</find>
-      <find>handleautocn</find>
       <find>fakeScanResultUntilPotentiallyNewComes</find>
       <find>handle</find>
       <find>autoconnect</find>
@@ -147,6 +144,9 @@
       <find>_scanResults</find>
       <find>1.4.</find>
       <find>check</find>
+      <find>changes</find>
+      <find>visibledevicesstre</find>
+      <find>visibledev</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -174,9 +174,9 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="AndroidView" />
-      <pane id="PackagesPane" />
       <pane id="Scope" />
+      <pane id="PackagesPane" />
+      <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -376,11 +376,18 @@
       <option name="project" value="LOCAL" />
       <updated>1581096985847</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="add info about added or removed to visibleDevicesStream">
+      <created>1589532037724</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1589532037724</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="2048" height="1208" extended-state="6" />
+    <frame x="0" y="0" width="2048" height="1280" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.12612164" />
@@ -474,7 +481,8 @@
     <MESSAGE value="delay scan restart" />
     <MESSAGE value="remove duplicated scan restart" />
     <MESSAGE value="expose ble state as broadcast stream" />
-    <option name="LAST_COMMIT_MESSAGE" value="expose ble state as broadcast stream" />
+    <MESSAGE value="add info about added or removed to visibleDevicesStream" />
+    <option name="LAST_COMMIT_MESSAGE" value="add info about added or removed to visibleDevicesStream" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$USER_HOME$/development/flutter/bin/cache/dart-sdk/lib/collection/list.dart">
@@ -617,8 +625,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/flutter_blue_manager.dart">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="406">
-          <caret line="103" column="19" selection-start-line="103" selection-start-column="19" selection-end-line="103" selection-end-column="19" />
+        <state relative-caret-position="-1296">
+          <caret line="154" column="63" selection-start-line="154" selection-start-column="63" selection-end-line="154" selection-end-column="63" />
           <folding>
             <element signature="e#0#20#0" expanded="true" />
           </folding>
