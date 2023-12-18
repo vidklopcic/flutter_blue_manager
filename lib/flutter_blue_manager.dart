@@ -21,26 +21,26 @@ class FlutterBlueManager {
   int discoverServicesDelayMs = 1000;
   int discoverServicesNRetries = 5;
   int maxResultAgeMs = 3000;
-  int chunkSize;
+  int? chunkSize;
 
-  StreamController<BluetoothState> _bleStateBroadcast;
+  late StreamController<BluetoothState> _bleStateBroadcast;
   Stream<BluetoothState> get bleState => _bleStateBroadcast.stream;
 
   // internal
   List<FBMDebugLevel> _debugFilter = FBMDebugLevel.values;
 
-  FlutterBlue _ble;
+  FlutterBlue? _ble;
 
   Map<String, BluetoothDevice> _bondedDevices = {};
 
-  FlutterBlue get ble => _ble;
-  BluetoothState _bleState;
+  FlutterBlue? get ble => _ble;
+  BluetoothState? _bleState;
 
   FlutterBlueManager._() {
     _bleStateBroadcast = StreamController.broadcast();
     _ble = FlutterBlue.instance;
-    _ble.state.listen(_bleStateChange);
-    _ble.setLogLevel(LogLevel.critical);
+    _ble!.state.listen(_bleStateChange);
+    _ble!.setLogLevel(LogLevel.critical);
     _fbmStateMonitorTimer =
         Timer.periodic(Duration(seconds: 5), _fbmStateMonitor);
     _visibleDevicesChanges = StreamController.broadcast();
@@ -63,22 +63,22 @@ class FlutterBlueManager {
 
   // connection
   Map<String, FBMDevice> _autoConnect = {};
-  Map<String, FBMConnection> _connections = {};
+  Map<String, FBMConnection?> _connections = {};
 
   // state monitoring
-  Timer _fbmStateMonitorTimer;
+  Timer? _fbmStateMonitorTimer;
   int _lastAdvertisementResult = DateTime.now().millisecondsSinceEpoch;
 
   // lock
-  int _bleActionsBusy;
+  int? _bleActionsBusy;
   List<Completer> _bleLockQueue = [];
 
   // PUBLIC API
   bool get bleBusy => _bleActionsBusy != null;
-  StreamController<VisibleDeviceChange> _visibleDevicesChanges;
+  late StreamController<VisibleDeviceChange> _visibleDevicesChanges;
 
   Stream<VisibleDeviceChange> get visibleDevicesStream => _visibleDevicesChanges.stream;
-  StreamController<FBMDevice> writeReadyChangeController;
+  late StreamController<FBMDevice> writeReadyChangeController;
 
   Stream<FBMDevice> get writeReadyChange => writeReadyChangeController.stream;
 
@@ -101,12 +101,12 @@ class FlutterBlueManager {
     return FBMLock(_unlockBleActions);
   }
 
-  Future clearCachedScanResults({String uuid, Duration delay}) async {
+  Future clearCachedScanResults({String? uuid, Duration? delay}) async {
     if (uuid != null) {
       if (delay != null) {
         await Future.delayed(delay);
         if (!_scanResults.containsKey(uuid)) return;
-        if (_scanResults[uuid].getAgeMilliseconds() > delay.inMilliseconds) {
+        if (_scanResults[uuid]!.getAgeMilliseconds() > delay.inMilliseconds) {
           _scanResults.remove(uuid);
         }
       } else {
@@ -122,7 +122,7 @@ class FlutterBlueManager {
     _debugFilter = levels;
   }
 
-  List<ScanResult> getScanResults({FBMScanFilter filter}) {
+  List<ScanResult> getScanResults({FBMScanFilter? filter}) {
     List<ScanResult> devices = [];
     for (TimedScanResult result in _scanResults.values) {
       if (filter != null && !filter(result.scanResult)) continue;
@@ -141,16 +141,17 @@ class FlutterBlueManager {
     } else {}
   }
 
-  void fakeScanResultUntilPotentiallyNewComes(ScanResult scanResult) {
-    if (scanResult == null) return;
-    String key = scanResult.device.id.toString();
+  void fakeScanResultUntilPotentiallyNewComes(ScanResult? scanResult) {
+    if (scanResult?.device == null) return;
+    String key = scanResult!.device!.id.toString();
     _scanResults[key] = TimedScanResult(scanResult);
   }
 
   void _onScanResult(ScanResult scanResult) {
-    _handleAutoConnect(scanResult.device, scanResult: scanResult);
+    if (scanResult.device == null) return;
+    _handleAutoConnect(scanResult.device!, scanResult: scanResult);
     _lastAdvertisementResult = _nowMs;
-    String key = scanResult.device.id.toString();
+    String key = scanResult.device!.id.toString();
     if (!_scanResults.containsKey(key)) {
       _visibleDevicesChanges.add(VisibleDeviceChange(scanResult));
       debug("scan result added: $key", FBMDebugLevel.info);
@@ -175,11 +176,11 @@ class FlutterBlueManager {
 
   List<String> _autoConnectHandled = [];
 
-  Future _handleAutoConnect(BluetoothDevice bdevice, {ScanResult scanResult}) async {
+  Future _handleAutoConnect(BluetoothDevice bdevice, {ScanResult? scanResult}) async {
     String uuid = bdevice.id.toString();
     if (!_autoConnect.containsKey(uuid) || _autoConnectHandled.contains(uuid))
       return;
-    FBMDevice device = _autoConnect[uuid];
+    FBMDevice? device = _autoConnect[uuid];
     if (device == null || device.pauseAutoConnect) return;
     _autoConnectHandled.add(uuid);
     debug('handling auto connect', FBMDebugLevel.info);
@@ -199,7 +200,7 @@ class FlutterBlueManager {
       return;
     }
     device.device = bdevice;
-    FBMConnection connection;
+    FBMConnection? connection;
     if (_connections.containsKey(uuid))
       connection = _connections[uuid];
     else
@@ -207,13 +208,13 @@ class FlutterBlueManager {
     _connections[uuid] = connection;
     try {
       print('STARTED CONNECTING ${DateTime.now()}');
-      await device.device
+      await device.device!
           .connect(autoConnect: true)
           .timeout(Duration(seconds: _CONNECT_TIMEOUT_S));
     } catch (e) {
       debug("connect ${device.uuid} timeout", FBMDebugLevel.error);
       try {
-        await device.device.disconnect().timeout(Duration(seconds: 5));
+        await device.device!.disconnect().timeout(Duration(seconds: 5));
       } catch (e) {
         debug("connect_disconnect ${device.uuid} error", FBMDebugLevel.error);
       }
@@ -226,21 +227,21 @@ class FlutterBlueManager {
   void _removeOldScanResults() {
     if (_nowMs - _lastClean > maxResultAgeMs) {
       _lastClean = _nowMs;
-      List<String> delete = new List();
+      List<String> delete = [];
       for (String key in _scanResults.keys) {
-        if (_scanResults[key].getAgeMilliseconds() < maxResultAgeMs) continue;
+        if (_scanResults[key]!.getAgeMilliseconds() < maxResultAgeMs) continue;
         delete.add(key);
         debug("scan result removed $key", FBMDebugLevel.info);
       }
       for (String key in delete) {
-        _visibleDevicesChanges.add(VisibleDeviceChange(_scanResults.remove(key).scanResult, removed: true));
+        _visibleDevicesChanges.add(VisibleDeviceChange(_scanResults.remove(key)!.scanResult, removed: true));
       }
     }
   }
 
   Future<bool> _restartScan() async {
-    if (await _ble.isScanning.first) {
-      await _ble.stopScan();
+    if (await _ble!.isScanning.first) {
+      await _ble!.stopScan();
     }
     return _startScan();
   }
@@ -250,7 +251,7 @@ class FlutterBlueManager {
       return false;
     }
     try {
-      _ble.scan().listen((sr) {
+      _ble!.scan().listen((sr) {
         try {
           _onScanResult(sr);
         } catch (e) {
@@ -284,8 +285,8 @@ class FlutterBlueManager {
     _devices.remove(uuid);
   }
 
-  FBMDevice getDevice(String uuid,
-      {FBMNewDevice newDevice, BluetoothDevice device}) {
+  FBMDevice? getDevice(String uuid,
+      {FBMNewDevice? newDevice, BluetoothDevice? device}) {
     if (_devices.containsKey(uuid)) return _devices[uuid];
     if (newDevice == null) return null;
     FBMDevice fbmDevice = newDevice(uuid);
@@ -296,25 +297,25 @@ class FlutterBlueManager {
   void autoConnect(FBMDevice device) {
     _autoConnect[device.uuid] = device;
     if (_bondedDevices.containsKey(device.uuid)) {
-      _handleAutoConnect(_bondedDevices[device.uuid]);
+      _handleAutoConnect(_bondedDevices[device.uuid]!);
     }
   }
 
   Future _updateBonded() async {
     try {
-      List<BluetoothDevice> bonded = await ble.getBondedDevices();
+      List<BluetoothDevice> bonded = await ble!.getBondedDevices();
       for (BluetoothDevice bd in bonded) {
         _bondedDevices[bd.id.toString()] = bd;
       }
       List<String> keys = _bondedDevices.keys.toList();
-      List<String> current = bonded.map((b) => b.id.toString());
+      List<String> current = bonded.map((b) => b.id.toString()) as List<String>;
       for (String key in keys) {
         if (!current.contains(key)) {
           _bondedDevices.remove(key);
           continue;
         }
         if (_autoConnect.containsKey(key)) {
-          _handleAutoConnect(_bondedDevices[keys]);
+          _handleAutoConnect(_bondedDevices[keys as String]!);
         }
       }
     } catch (_) {}
@@ -329,7 +330,7 @@ class FlutterBlueManager {
       _restartScan();
     }
 
-    if (bleBusy && _nowMs - _bleActionsBusy > _BLE_ACTIONS_BUSY_TIMEOUT_MS) {
+    if (bleBusy && _nowMs - _bleActionsBusy! > _BLE_ACTIONS_BUSY_TIMEOUT_MS) {
       debug("FIXME! ble actions busy timeout", FBMDebugLevel.error);
       _unlockBleActions();
     }
@@ -342,7 +343,7 @@ class FlutterBlueManager {
   }
 
   Future _syncWithPlatform() async {
-    List<BluetoothDevice> devices = await _ble.connectedDevices;
+    List<BluetoothDevice> devices = await _ble!.connectedDevices;
     for (BluetoothDevice device in devices) {
       String uuid = device.id.toString();
       if (!_connections.containsKey(uuid)) {
@@ -350,7 +351,7 @@ class FlutterBlueManager {
         debug("device on platform unregistered!", FBMDebugLevel.error);
         continue;
       }
-      if (_connections[uuid].state != BluetoothDeviceState.connected) {
+      if (_connections[uuid]!.state != BluetoothDeviceState.connected) {
         debug("device on platform connected, but disconnected here!",
             FBMDebugLevel.error);
         device.disconnect();
@@ -359,7 +360,7 @@ class FlutterBlueManager {
   }
 
   Future _disconnectConnectedOnPlatform() async {
-    List<BluetoothDevice> devices = await _ble.connectedDevices;
+    List<BluetoothDevice> devices = await _ble!.connectedDevices;
     for (BluetoothDevice device in devices) {
       device.disconnect();
     }
@@ -393,7 +394,7 @@ class TimedScanResult {
   }
 
   ScanResult scanResult;
-  int _lastAdvertisement;
+  late int _lastAdvertisement;
 }
 
 class VisibleDeviceChange {

@@ -10,7 +10,7 @@ typedef void FBMWriteEvent(bool successful);
 
 class FBMWriteData {
   final List<int> data;
-  FBMWriteEvent callback;
+  FBMWriteEvent? callback;
   final BluetoothCharacteristic characteristic;
   final bool withoutResponse;
 
@@ -28,7 +28,7 @@ abstract class FBMConnection {
 
   BluetoothDeviceState get state => _state;
 
-  List<BluetoothService> services = [];
+  List<BluetoothService>? services = [];
 
   List<FBMWriteData> _outBuffer = [];
   Map<GlobalKey, FBMWriteData> _realTimeWrite = {};
@@ -38,18 +38,18 @@ abstract class FBMConnection {
   bool get isSending => _sendInProgress;
 
   FBMConnection(this.device) {
-    device.device.state.listen(_onDeviceConnStateChange,
+    device.device!.state.listen(_onDeviceConnStateChange,
         onDone: () => device.fbm.debug(
             'device ${device.uuid} state stream done', FBMDebugLevel.error));
     device.connection = this;
   }
 
-  int _discoveringServicesStart;
+  int? _discoveringServicesStart;
 
   int get msSinceStartedDiscovering => _discoveringServicesStart != null
-      ? DateTime.now().millisecondsSinceEpoch - _discoveringServicesStart
+      ? DateTime.now().millisecondsSinceEpoch - _discoveringServicesStart!
       : 0;
-  Future _discoveringServices;
+  Future? _discoveringServices;
 
   bool _turningOnNotifications = false;
 
@@ -62,8 +62,8 @@ abstract class FBMConnection {
       if (_discoveringServices != null) {
         device.fbm.debug("already discovering - discover after first finishes!",
             FBMDebugLevel.info);
-        _discoveringServices.then((_) {
-          if (services != null && services.length > 0) {
+        _discoveringServices!.then((_) {
+          if (services != null && services!.length > 0) {
             device.fbm.debug("discovery stopped - already discovered from previous run!",
                 FBMDebugLevel.info);
             return;
@@ -99,7 +99,7 @@ abstract class FBMConnection {
     FBMLock lock = await device.fbm.getBleLock();
     device.fbm.debug("discovering services - lock acquired", FBMDebugLevel.info);
 
-    List<BluetoothService> svcs = await _discoverServicesInternal();
+    List<BluetoothService>? svcs = await _discoverServicesInternal();
 
     lock.unlock();
     _discoveringServices = null;
@@ -110,20 +110,20 @@ abstract class FBMConnection {
       onServicesDiscovered();
     } else {
       device.fbm.debug("discover services error (${services == null ? 'services are null' : 'service len is 0'})", FBMDebugLevel.error);
-      device.device.disconnect();
+      device.device!.disconnect();
     }
   }
 
-  Future<List<BluetoothService>> _discoverServicesInternal() async {
+  Future<List<BluetoothService>?> _discoverServicesInternal() async {
     for (int i=0;i<flutterBlueManager.discoverServicesNRetries;i++) {
       _discoveringServicesStart = DateTime.now().millisecondsSinceEpoch;
       if (flutterBlueManager.discoverServicesDelayMs != null && flutterBlueManager.discoverServicesDelayMs > 0) {
         device.fbm.debug("discovering services - wait ${flutterBlueManager.discoverServicesDelayMs}ms", FBMDebugLevel.info);
         await Future.delayed(Duration(milliseconds: flutterBlueManager.discoverServicesDelayMs));
       }
-      List<BluetoothService> svcs;
+      List<BluetoothService>? svcs;
       try {
-        svcs = await device.device.discoverServices().timeout(Duration(seconds: DISCOVER_TIMEOUT));
+        svcs = await device.device!.discoverServices().timeout(Duration(seconds: DISCOVER_TIMEOUT));
       } catch (_) {
         device.fbm.debug("discovering services timeout", FBMDebugLevel.error);
       }
@@ -157,7 +157,7 @@ abstract class FBMConnection {
     return result;
   }
 
-  BluetoothCharacteristic getCharacteristic(
+  BluetoothCharacteristic? getCharacteristic(
       BluetoothService service, String uuid) {
     for (BluetoothCharacteristic characteristic in service.characteristics) {
       if (characteristic.uuid.toString() == uuid) return characteristic;
@@ -165,8 +165,8 @@ abstract class FBMConnection {
     return null;
   }
 
-  BluetoothService getService(String uuid) {
-    for (BluetoothService service in services) {
+  BluetoothService? getService(String uuid) {
+    for (BluetoothService service in services!) {
       if (service.uuid.toString() == uuid) return service;
     }
     return null;
@@ -176,7 +176,7 @@ abstract class FBMConnection {
   GlobalKey _defaultRtKey = GlobalKey();
 
   /// transmit ASAP, if previous unsent, replace with new value
-  void realTimeWrite(FBMWriteData data, {GlobalKey key}) {
+  void realTimeWrite(FBMWriteData data, {GlobalKey? key}) {
     key = key ?? _defaultRtKey;
     _realTimeWrite[key] = data;
     if (!_realTimeWriteKeys.contains(key)) {
@@ -201,7 +201,7 @@ abstract class FBMConnection {
   /// Recursively send all data from _outBuffer and
   /// sets _sendInProgress=true until _outBuffer.length == 0
   void _send() async {
-    FBMWriteData data = _fetchNextFBMWriteDeta();
+    FBMWriteData? data = _fetchNextFBMWriteDeta();
     if (data == null) {
       _sendInProgress = false;
       return;
@@ -209,12 +209,12 @@ abstract class FBMConnection {
     assert(data.characteristic != null);
     _sendInProgress = true;
 
-    int chunkSz = flutterBlueManager.chunkSize == null
+    int? chunkSz = flutterBlueManager.chunkSize == null
         ? data.data.length
         : flutterBlueManager.chunkSize;
     int len = data.data.length;
     for (int i = 0; i < len; i += chunkSz) {
-      List<int> chunk = data.data.sublist(i, (i + chunkSz).clamp(0, len));
+      List<int> chunk = data.data.sublist(i, (i + chunkSz!).clamp(0, len));
 
       for (int i = 0;
           i < _WRITE_TIMEOUT * 1000 / _CHARACTERISTIC_POLL_MS;
@@ -245,17 +245,17 @@ abstract class FBMConnection {
         break;
       }
     }
-    if (data.callback != null) data.callback(true);
+    if (data.callback != null) data.callback!(true);
     _send();
   }
 
   void _cancelSend(FBMWriteData data) {
-    if (data.callback != null) data.callback(false);
+    if (data.callback != null) data.callback!(false);
     _cancelWriteQueue();
     _sendInProgress = false;
   }
 
-  FBMWriteData _fetchNextFBMWriteDeta() {
+  FBMWriteData? _fetchNextFBMWriteDeta() {
     if (_outBuffer.length != 0) {
       return _outBuffer.removeAt(0);
     }
@@ -267,11 +267,11 @@ abstract class FBMConnection {
 
   void _cancelWriteQueue() {
     for (FBMWriteData data in _outBuffer) {
-      if (data.callback != null) data.callback(false);
+      if (data.callback != null) data.callback!(false);
     }
     for (GlobalKey key in _realTimeWriteKeys) {
-      FBMWriteData data = _realTimeWrite[key];
-      if (data.callback != null) data.callback(false);
+      FBMWriteData data = _realTimeWrite[key]!;
+      if (data.callback != null) data.callback!(false);
     }
     _outBuffer.clear();
     _realTimeWrite = {};

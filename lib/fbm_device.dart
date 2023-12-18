@@ -17,9 +17,9 @@ abstract class FBMDevice {
   set pauseAutoConnect(bool pause) => _pauseAutoConnect = pause == true;
   int doNotConnectBeforeTimestamp = 0;
 
-  ScanResult scanResult;
+  ScanResult? scanResult;
 
-  BluetoothDevice device;
+  BluetoothDevice? device;
 
   FBMDevice(this.uuid, this.fbm) {
     assert (uuid != null);
@@ -28,7 +28,7 @@ abstract class FBMDevice {
   }
 
   // writeReady
-  StreamController<bool> _writeReadyStreamController;
+  late StreamController<bool> _writeReadyStreamController;
   Stream<bool> get writeReadyStream => _writeReadyStreamController.stream;
   bool _writeReady = false;
 
@@ -42,7 +42,7 @@ abstract class FBMDevice {
 
   bool get writeReady => _writeReady && connection?.state == BluetoothDeviceState.connected ?? false;
 
-  FBMConnection connection;
+  FBMConnection? connection;
 
   void close() {
     fbm.unregisterDevice(uuid);
@@ -58,7 +58,7 @@ abstract class FBMDevice {
   void disconnect() {
     if (device == null) return;
     fbm.cancelAutoConnect(this);
-    device.disconnect();
+    device!.disconnect();
   }
 
   void updateConnectRetryDelay() {

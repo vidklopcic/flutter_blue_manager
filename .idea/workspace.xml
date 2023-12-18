@@ -3,11 +3,34 @@
   <component name="AndroidLogFilters">
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="818055a9-afe7-44bb-b738-21c5f30594eb" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/build.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/gradle.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/settings.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/src/main/AndroidManifest.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/src/main/java/gm5/solutions/flutter_blue_manager/FlutterBlueManagerPlugin.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/example/lib/main.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/example/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/example/pubspec.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/example/pubspec.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutter_blue_manager.iml" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_blue_manager.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Assets/.gitkeep" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Classes/FlutterBlueManagerPlugin.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Classes/FlutterBlueManagerPlugin.m" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/flutter_blue_manager.podspec" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/fbm_connection.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/fbm_connection.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/fbm_device.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/fbm_device.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/flutter_blue_manager.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/flutter_blue_manager.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/flutter_blue_manager_test.dart" beforeDir="false" afterPath="$PROJECT_DIR$/test/flutter_blue_manager_test.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,7 +40,6 @@
   <component name="DefaultGradleProjectSettings">
     <option name="isMigrated" value="true" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="c7826118" />
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
@@ -28,19 +50,20 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
   <component name="ProjectId" id="1i3NxlZniAfBV45yVG2Hqqu7Wgi" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">
-    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="dart.analysis.tool.window.force.activate" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="show.migrate.to.gradle.popup" value="false" />
-  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "dart.analysis.tool.window.visible": "false"
+  }
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/lib" />
@@ -224,6 +247,42 @@
       </list>
     </option>
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="3e7957db-faa2-4194-8d8e-c2b0f3ae0d5f">
+          <value>
+            <State>
+              <option name="SHOW_ONLY_AFFECTED_CHANGES" value="true" />
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="HEAD" />
+                      </list>
+                    </value>
+                  </entry>
+                  <entry key="roots">
+                    <value>
+                      <list>
+                        <option value="$PROJECT_DIR$" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="OPEN_GENERIC_TABS">
+      <map>
+        <entry key="3e7957db-faa2-4194-8d8e-c2b0f3ae0d5f" value="TOOL_WINDOW" />
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
@@ -250,15 +309,5 @@
     <MESSAGE value="expose ble state as broadcast stream" />
     <MESSAGE value="add info about added or removed to visibleDevicesStream" />
     <option name="LAST_COMMIT_MESSAGE" value="add info about added or removed to visibleDevicesStream" />
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="676" y="397" width="695" height="486" key="find.popup" timestamp="1601140538701">
-      <screen x="0" y="0" width="2048" height="1280" />
-    </state>
-    <state x="676" y="397" width="695" height="486" key="find.popup/0.0.2048.1280/-341.-1440.2560.1440@0.0.2048.1280" timestamp="1601140538701" />
-    <state x="689" y="291" width="670" height="676" key="search.everywhere.popup" timestamp="1601132875324">
-      <screen x="0" y="0" width="2048" height="1280" />
-    </state>
-    <state x="689" y="291" width="670" height="676" key="search.everywhere.popup/0.0.2048.1280/-341.-1440.2560.1440@0.0.2048.1280" timestamp="1601132875324" />
   </component>
 </project>
