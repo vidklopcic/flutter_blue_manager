@@ -118,7 +118,6 @@ class FlutterBlueManager {
   }
 
   void setDebugFilter(List<FBMDebugLevel> levels) {
-    assert(levels != null);
     _debugFilter = levels;
   }
 
@@ -184,22 +183,17 @@ class FlutterBlueManager {
     if (device == null || device.pauseAutoConnect) return;
     _autoConnectHandled.add(uuid);
     debug('handling auto connect', FBMDebugLevel.info);
-    if (connectDelayMs != null && connectDelayMs > 0) {
+    if (connectDelayMs > 0) {
       debug('waiting $connectDelayMs ms before connecting', FBMDebugLevel.info);
       await Future.delayed(Duration(milliseconds: connectDelayMs));
     }
-    debug('connecting ${bdevice?.name}', FBMDebugLevel.info);
+    debug('connecting ${bdevice.name}', FBMDebugLevel.info);
 
     FBMLock lock = await getBleLock();
     if (scanResult != null) {
       device.initFromScanResult(scanResult);
     }
-    if (bdevice == null) {
-      _autoConnectHandled.remove(uuid);
-      lock.unlock();
-      return;
-    }
-    device.device = bdevice;
+    device.device ??= bdevice;
     FBMConnection? connection;
     if (_connections.containsKey(uuid))
       connection = _connections[uuid];

@@ -4,33 +4,15 @@
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="AutoImportSettings">
-    <option name="autoReloadType" value="SELECTIVE" />
+    <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="818055a9-afe7-44bb-b738-21c5f30594eb" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/build.gradle" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/gradle.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/settings.gradle" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/src/main/AndroidManifest.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/src/main/java/gm5/solutions/flutter_blue_manager/FlutterBlueManagerPlugin.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/example/lib/main.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/example/pubspec.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/example/pubspec.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flutter_blue_manager.iml" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_blue_manager.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Assets/.gitkeep" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Classes/FlutterBlueManagerPlugin.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Classes/FlutterBlueManagerPlugin.m" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/flutter_blue_manager.podspec" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/fbm_connection.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/fbm_connection.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/fbm_device.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/fbm_device.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/flutter_blue_manager.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/flutter_blue_manager.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/flutter_blue_manager_test.dart" beforeDir="false" afterPath="$PROJECT_DIR$/test/flutter_blue_manager_test.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,16 +41,20 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "dart.analysis.tool.window.visible": "false"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
+    &quot;show.migrate.to.gradle.popup&quot;: &quot;false&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/lib" />
     </key>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -234,7 +220,14 @@
       <option name="project" value="LOCAL" />
       <updated>1589532037724</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="fixed static analysis errors">
+      <created>1702906049191</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1702906049191</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -308,6 +301,7 @@
     <MESSAGE value="remove duplicated scan restart" />
     <MESSAGE value="expose ble state as broadcast stream" />
     <MESSAGE value="add info about added or removed to visibleDevicesStream" />
-    <option name="LAST_COMMIT_MESSAGE" value="add info about added or removed to visibleDevicesStream" />
+    <MESSAGE value="fixed static analysis errors" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed static analysis errors" />
   </component>
 </project>
