@@ -11,7 +11,7 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_blue:
-     path: ../flutter_blue
+    git: https://github.com/vidklopcic/flutter_blue.git
 
 
 dev_dependencies:

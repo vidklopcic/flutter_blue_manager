@@ -7,10 +7,7 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="818055a9-afe7-44bb-b738-21c5f30594eb" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/flutter_blue_manager.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/flutter_blue_manager.dart" afterDir="false" />
-    </list>
+    <list default="true" id="818055a9-afe7-44bb-b738-21c5f30594eb" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -224,7 +221,14 @@
       <option name="project" value="LOCAL" />
       <updated>1702906049191</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="autoConnect after 5 advertisements (to ensure name change propagation)">
+      <created>1703281611441</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1703281611441</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -299,6 +303,7 @@
     <MESSAGE value="expose ble state as broadcast stream" />
     <MESSAGE value="add info about added or removed to visibleDevicesStream" />
     <MESSAGE value="fixed static analysis errors" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed static analysis errors" />
+    <MESSAGE value="autoConnect after 5 advertisements (to ensure name change propagation)" />
+    <option name="LAST_COMMIT_MESSAGE" value="autoConnect after 5 advertisements (to ensure name change propagation)" />
   </component>
 </project>
